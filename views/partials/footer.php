@@ -1,4 +1,4 @@
-<footer class="bg-[#2b2a24]">
+<footer class="bg-[#2b2a24] py-0">
   <div class="mx-auto max-w-7xl px-6 pt-8 pb-8 sm:pt-12 lg:px-8 lg:pt-16">
     <div class="flex flex-col items-center space-y-6 text-center">
       <img src="/assets/images/flowHavenTransparent.png" alt="FlowHaven Studios" class="h-12" />

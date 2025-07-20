@@ -33,7 +33,7 @@
       <a href="/contact" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'contact' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Contact</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="/login" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'login' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Log in</a>
+        <a href="/login" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'login' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Log in <span aria-hidden="true">&rarr;</span> </a>
       </div>
     </nav>
     
