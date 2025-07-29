@@ -4,7 +4,7 @@
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
-      navbar.style.backgroundColor = '#2b2a24';
+      navbar.style.backgroundColor = '#e8d7c3';
       navbar.classList.add('bg-opacity-90', 'backdrop-blur-md');
     } else {
       navbar.style.backgroundColor = 'transparent';

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flow Haven Studios</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/jpeg" href="/assets/images/favicon.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <div class="bg-gray-900">
@@ -13,7 +16,6 @@
       <div class="flex lg:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
-
           <img src="/assets/images/flowHavenTransparent.png" alt="" class="h-8 w-auto" />
         </a>
       </div>
@@ -25,22 +27,27 @@
           </svg>
         </button>
       </div>
+      <?php if (!($_SESSION['admin_logged_in'] ?? false)): ?>
       <div class="hidden lg:flex lg:gap-x-12">
-      <a href="/" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'home' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Home</a>
-      <a href="/about" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'about' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">About</a>
-      <a href="/classes" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'classes' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Classes</a>
-      <a href="/pricing" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'pricing' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Pricing</a>
-      <a href="/contact" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'contact' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Contact</a>
+      <a href="/" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'home' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">home</a>
+      <a href="/about" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'about' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">about</a>
+      <a href="/classes" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'classes' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">classes</a>
+      <a href="/pricing" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'pricing' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">pricing</a>
+      <a href="/contact" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'contact' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">contact</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="/login" class="text-sm font-semibold transition-colors duration-200 <?= $activePage === 'login' ? 'text-[#fed783]' : 'text-[#845d45] hover:text-[#fed783]' ?>">Log in <span aria-hidden="true">&rarr;</span> </a>
+        <a href="/login" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'login' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">log in <span aria-hidden="true">&rarr;</span> </a>
+        <?php else: ?>
+        <a href="/admin/logout" class="text-base font-quicksand text-[#845d45] hover:text-white px-3">log out</a>
+        <a href="/admin/dashboard" class="text-base font-quicksand text-[#845d45] hover:text-white <?= $activePage === 'dashboard' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">dashboard</a>
+      <?php endif; ?>
       </div>
     </nav>
     
     
 </header>
 <!-- Mobile menu -->
-<div id="mobile-menu" class="lg:hidden hidden fixed inset-0 z-50 bg-[#2b2a24]">
+<div id="mobile-menu" class="lg:hidden hidden fixed inset-0 z-50 bg-[#e8d7c3]">
   <div class="absolute right-0 top-0 h-full w-full p-6">
     <div class="flex items-center justify-between">
       <a href="/" class="-m-1.5 p-1.5">
@@ -55,13 +62,24 @@
       </button>
     </div>
 
+    <?php if (!($_SESSION['admin_logged_in'] ?? false)): ?>
     <div class="mt-6 space-y-4">
-      <a href="/" class="block rounded-lg px-4 py-2 text-base font-semibold text-[#fed783] hover:text-[#845d45]">Home</a>
-      <a href="/about" class="block rounded-lg px-4 py-2 text-base font-semibold text-[#fed783] hover:text-[#845d45]">About</a>
-      <a href="/classes" class="block rounded-lg px-4 py-2 text-base font-semibold text-[#fed783] hover:text-[#845d45]">Classes</a>
-      <a href="/pricing" class="block rounded-lg px-4 py-2 text-base font-semibold text-[#fed783] hover:text-[#845d45]">Pricing</a>
-      <a href="/contact" class="block rounded-lg px-4 py-2 text-base font-semibold text-[#fed783] hover:text-[#845d45]">Contact</a>
-      <a href="/login" class="block rounded-lg px-4 py-2 mt-4 text-base font-semibold text-[#fed783] hover:text-[#845d45]">Log in</a>
+      <a href="/" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">home</a>
+      <a href="/about" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">about</a>
+      <a href="/classes" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">classes</a>
+      <a href="/pricing" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">Pricing</a>
+      <a href="/contact" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">contact</a>
+      <a href="/login" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">log in</a>
+      <?php else: ?>
+        <a href="/admin/logout" class="block rounded-lg px-4 py-2 mt-4 text-base font-quicksand text-white hover:text-[#845d45]">log out</a>
+        <a href="/admin/dashboard" class="block rounded-lg px-4 py-2 mt-4 text-base font-quicksand text-white hover:text-[#845d45]">dashboard</a>
+      <?php endif; ?>
     </div>
   </div>
 </div>
+
+<style>
+  .font-quicksand {
+    font-family: 'Quicksand', sans-serif;
+  }
+</style>
