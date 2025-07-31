@@ -27,17 +27,17 @@
           </svg>
         </button>
       </div>
-      <?php if (!($_SESSION['admin_logged_in'] ?? false)): ?>
       <div class="hidden lg:flex lg:gap-x-12">
-      <a href="/" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'home' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">home</a>
-      <a href="/about" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'about' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">about</a>
-      <a href="/classes" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'classes' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">classes</a>
-      <a href="/pricing" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'pricing' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">pricing</a>
-      <a href="/contact" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'contact' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">contact</a>
+        <a href="/" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'home' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">home</a>
+        <a href="/book" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'book' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">book</a>
+        <a href="/instructors" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'instructors' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">instructors</a>
+        <a href="/faq" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'faq' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">faq</a>
       </div>
+      <?php if (!($_SESSION['admin_logged_in'] ?? false)): ?>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="/login" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'login' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">log in <span aria-hidden="true">&rarr;</span> </a>
         <?php else: ?>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="/admin/logout" class="text-base font-quicksand text-[#845d45] hover:text-white px-3">log out</a>
         <a href="/admin/dashboard" class="text-base font-quicksand text-[#845d45] hover:text-white <?= $activePage === 'dashboard' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">dashboard</a>
       <?php endif; ?>
