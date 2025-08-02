@@ -5,6 +5,7 @@ use Core\Container;
 use Core\Database;
 use Core\User;
 use Core\Location;
+use Core\PasswordReset;
 
 $container = new Container();
 
@@ -20,6 +21,10 @@ $container->bind('Core\User', function () {
 
 $container->bind('Core\Location', function () {
     return new Location();
+});
+
+$container->bind('Core\PasswordReset', function () {
+    return new PasswordReset();
 });
 
 App::setContainer($container);

@@ -19,7 +19,7 @@
   }
 
   // modal functionality
-  let isLoginMode = true;
+  let currentModalMode = 'login'; // 'login', 'register', 'forgot'
 
   function openLoginModal() {
     const modal = document.getElementById('authModal');
@@ -62,34 +62,76 @@
     body.removeAttribute('data-scroll-y');
     
     resetForms();
+    currentModalMode = 'login';
+    showLogin();
   }
 
-  function toggleForm() {
+  function showLogin() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     const modalTitle = document.getElementById('modalTitle');
     const toggleText = document.getElementById('toggleText');
 
-    if (isLoginMode) {
-      // switch to register mode
-      loginForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
-      modalTitle.textContent = 'create account';
-      toggleText.innerHTML = 'already have an account? <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
-      isLoginMode = false;
-      
-      // load locations when switching to register form
-      loadLocations();
-    } else {
-      // switch to login mode
-      registerForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
-      modalTitle.textContent = 'sign in';
-      toggleText.innerHTML = 'don\'t have an account? <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign up</button>';
-      isLoginMode = true;
-    }
+    // hide all forms
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+    forgotPasswordForm.classList.add('hidden');
+
+    modalTitle.textContent = 'sign in';
+    toggleText.innerHTML = 'don\'t have an account? <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign up</button>';
     
+    currentModalMode = 'login';
     hideMessage();
+  }
+
+  function showRegister() {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const modalTitle = document.getElementById('modalTitle');
+    const toggleText = document.getElementById('toggleText');
+
+    // hide all forms
+    loginForm.classList.add('hidden');
+    registerForm.classList.remove('hidden');
+    forgotPasswordForm.classList.add('hidden');
+
+    modalTitle.textContent = 'create account';
+    toggleText.innerHTML = 'already have an account? <button onclick="showLogin()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
+    
+    currentModalMode = 'register';
+    hideMessage();
+    
+    // load locations when switching to register form
+    loadLocations();
+  }
+
+  function showForgotPassword() {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const modalTitle = document.getElementById('modalTitle');
+    const toggleText = document.getElementById('toggleText');
+
+    // hide all forms
+    loginForm.classList.add('hidden');
+    registerForm.classList.add('hidden');
+    forgotPasswordForm.classList.remove('hidden');
+
+    modalTitle.textContent = 'reset password';
+    toggleText.innerHTML = 'remember your password? <button onclick="showLogin()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
+    
+    currentModalMode = 'forgot';
+    hideMessage();
+  }
+
+  function toggleForm() {
+    if (currentModalMode === 'login') {
+      showRegister();
+    } else {
+      showLogin();
+    }
   }
 
   // load locations for the dropdown
@@ -120,6 +162,7 @@
   function resetForms() {
     document.getElementById('loginForm').reset();
     document.getElementById('registerForm').reset();
+    document.getElementById('forgotPasswordForm').reset();
     hideMessage();
   }
 
@@ -137,10 +180,11 @@
     }
   }
 
-  // handle login and register form submissions
+  // handle login, register, and forgot password form submissions
   document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
 
     if (loginForm) {
       loginForm.addEventListener('submit', async function(e) {
@@ -203,10 +247,40 @@
           if (result.success) {
             showMessage('account created successfully! you can now sign in.', false);
             setTimeout(() => {
-              toggleForm(); // switch back to login form
+              showLogin(); // switch back to login form
             }, 2000);
           } else {
             showMessage(result.message || 'registration failed. please try again.', true);
+          }
+        } catch (error) {
+          showMessage('an error occurred. please try again.', true);
+        }
+      });
+    }
+
+    // handle forgot password form submission
+    if (forgotPasswordForm) {
+      forgotPasswordForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        
+        try {
+          const response = await fetch('/auth/forgot-password', {
+            method: 'POST',
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showMessage('reset instructions sent! check your email for the reset link.', false);
+            // optionally switch back to login after a delay
+            setTimeout(() => {
+              showLogin();
+            }, 3000);
+          } else {
+            showMessage(result.message || 'failed to send reset email. please try again.', true);
           }
         } catch (error) {
           showMessage('an error occurred. please try again.', true);

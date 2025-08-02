@@ -10,6 +10,9 @@ $router->get('/api/locations', 'api/locations.php');
 // Authentication routes
 $router->post('/auth/login', 'auth/login.php');
 $router->post('/auth/register', 'auth/register.php');
+$router->post('/auth/forgot-password', 'auth/forgot-password.php');
+$router->post('/auth/reset-password', 'auth/reset-password.php');
+$router->get('/reset-password', 'reset-password.php');
 $router->get('/auth/logout', 'auth/logout.php');
 
 // Admin routes

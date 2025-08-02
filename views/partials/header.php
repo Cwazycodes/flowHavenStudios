@@ -133,9 +133,33 @@
                         <input type="password" id="loginPassword" name="password" required 
                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
                     </div>
+                    <div class="flex items-center justify-between">
+                        <button type="button" onclick="showForgotPassword()" class="text-sm text-[#845d45] hover:text-[#6e4635] font-quicksand">
+                            forgot password?
+                        </button>
+                    </div>
                     <button type="submit" 
                             class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium">
                         sign in
+                    </button>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgotPasswordForm" class="space-y-4 hidden">
+                    <div>
+                        <label for="forgotEmail" class="block text-sm font-medium text-gray-700 font-quicksand">email address</label>
+                        <input type="email" id="forgotEmail" name="email" required 
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
+                        <p class="mt-2 text-sm text-gray-600 font-quicksand">
+                            enter your email address and we'll send you a link to reset your password.
+                        </p>
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium">
+                        send reset link
+                    </button>
+                    <button type="button" onclick="showLogin()" class="w-full text-[#845d45] hover:text-[#6e4635] font-quicksand text-sm">
+                        back to sign in
                     </button>
                 </form>
 
