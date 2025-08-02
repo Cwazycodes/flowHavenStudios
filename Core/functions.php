@@ -56,3 +56,61 @@ function old($key, $default = '')
 {
     return Core\Session::get('old')[$key] ?? $default;
 }
+
+
+/**
+ * Get current authenticated user
+ */
+function auth()
+{
+    return $_SESSION['user'] ?? null;
+}
+
+/**
+ * Check if user is authenticated
+ */
+function isAuthenticated()
+{
+    return isset($_SESSION['user']);
+}
+
+/**
+ * Check if current user has specific role
+ */
+function hasRole($role)
+{
+    return isAuthenticated() && $_SESSION['user']['role'] === $role;
+}
+
+/**
+ * Check if current user is admin
+ */
+function isAdmin()
+{
+    return hasRole('admin');
+}
+
+/**
+ * Check if current user is instructor
+ */
+function isInstructor()
+{
+    return hasRole('instructor');
+}
+
+/**
+ * Check if current user is student
+ */
+function isStudent()
+{
+    return hasRole('student');
+}
+
+/**
+ * Get user's full name
+ */
+function userName()
+{
+    $user = auth();
+    return $user ? $user['first_name'] . ' ' . $user['last_name'] : '';
+}
