@@ -54,6 +54,3 @@ if ($auth->attempt($email, $password)) {
 }
 
 ?>
-
-
-

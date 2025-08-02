@@ -1,10 +1,10 @@
 <?php
-// Updated bootstrap.php
 
 use Core\App;
 use Core\Container;
 use Core\Database;
 use Core\User;
+use Core\Location;
 
 $container = new Container();
 
@@ -18,4 +18,10 @@ $container->bind('Core\User', function () {
     return new User();
 });
 
+$container->bind('Core\Location', function () {
+    return new Location();
+});
+
 App::setContainer($container);
+
+

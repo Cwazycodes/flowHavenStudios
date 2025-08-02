@@ -83,7 +83,7 @@
       <?php if (!isAuthenticated()): ?>
         <a href="#" onclick="openLoginModal(); toggleMobileMenu();" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">log in</a>
       <?php else: ?>
-        <div class="px-4 py-2 text-base font-quicksand text-white">Welcome, <?= auth()['first_name'] ?></div>
+        <div class="px-4 py-2 text-base font-quicksand text-white">welcome, <?= strtolower(auth()['first_name']) ?></div>
         <a href="/auth/logout" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">log out</a>
         <?php if (isAdmin()): ?>
           <a href="/admin/dashboard" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">admin dashboard</a>
@@ -176,6 +176,13 @@
                     
                     <!-- Student-specific fields -->
                     <div id="studentFields" class="space-y-4">
+                        <div>
+                            <label for="preferredLocation" class="block text-sm font-medium text-gray-700 font-quicksand">preferred location</label>
+                            <select id="preferredLocation" name="location_id" required
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
+                                <option value="">select a location...</option>
+                            </select>
+                        </div>
                         <div>
                             <label for="fitnessLevel" class="block text-sm font-medium text-gray-700 font-quicksand">fitness level</label>
                             <select id="fitnessLevel" name="fitness_level" 

@@ -68,5 +68,3 @@ if ($result['success']) {
 } else {
     echo json_encode(['success' => false, 'message' => $result['message']]);
 }
-
-?>

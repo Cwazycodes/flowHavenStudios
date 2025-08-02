@@ -1,5 +1,5 @@
 <script>
-  //  Navbar scroll functionality
+  //  navbar scroll functionality
   const navbar = document.getElementById('main-navbar');
 
   window.addEventListener('scroll', () => {
@@ -12,27 +12,27 @@
     }
   });
 
-  // Mobile menu functionality
+  // mobile menu functionality
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('hidden');
   }
 
-  // Modal functionality
+  // modal functionality
   let isLoginMode = true;
 
   function openLoginModal() {
     const modal = document.getElementById('authModal');
     const body = document.body;
     
-    // Store current scroll position
+    // store current scroll position
     const scrollY = window.scrollY;
     body.setAttribute('data-scroll-y', scrollY);
     
-    // Show modal
+    // show modal
     modal.classList.remove('hidden');
     
-    // Prevent body scroll but maintain position
+    // prevent body scroll but maintain position
     body.style.position = 'fixed';
     body.style.top = `-${scrollY}px`;
     body.style.width = '100%';
@@ -43,22 +43,22 @@
     const modal = document.getElementById('authModal');
     const body = document.body;
     
-    // Get the stored scroll position
+    // get the stored scroll position
     const scrollY = body.getAttribute('data-scroll-y') || '0';
     
-    // Hide modal
+    // hide modal
     modal.classList.add('hidden');
     
-    // Restore body scroll
+    // restore body scroll
     body.style.position = '';
     body.style.top = '';
     body.style.width = '';
     body.style.overflow = '';
     
-    // Restore scroll position
+    // restore scroll position
     window.scrollTo(0, parseInt(scrollY));
     
-    // Clean up
+    // clean up
     body.removeAttribute('data-scroll-y');
     
     resetForms();
@@ -71,14 +71,17 @@
     const toggleText = document.getElementById('toggleText');
 
     if (isLoginMode) {
-      // Switch to register mode
+      // switch to register mode
       loginForm.classList.add('hidden');
       registerForm.classList.remove('hidden');
       modalTitle.textContent = 'create account';
       toggleText.innerHTML = 'already have an account? <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
       isLoginMode = false;
+      
+      // load locations when switching to register form
+      loadLocations();
     } else {
-      // Switch to login mode
+      // switch to login mode
       registerForm.classList.add('hidden');
       loginForm.classList.remove('hidden');
       modalTitle.textContent = 'sign in';
@@ -87,6 +90,31 @@
     }
     
     hideMessage();
+  }
+
+  // load locations for the dropdown
+  async function loadLocations() {
+    try {
+      const response = await fetch('/api/locations');
+      const result = await response.json();
+      
+      if (result.success) {
+        const locationSelect = document.getElementById('preferredLocation');
+        
+        // clear existing options except the first one
+        locationSelect.innerHTML = '<option value="">select a location...</option>';
+        
+        // add location options
+        result.locations.forEach(location => {
+          const option = document.createElement('option');
+          option.value = location.id;
+          option.textContent = location.name;
+          locationSelect.appendChild(option);
+        });
+      }
+    } catch (error) {
+      console.error('failed to load locations:', error);
+    }
   }
 
   function resetForms() {
@@ -109,7 +137,7 @@
     }
   }
 
-  // Handle login form submission
+  // handle login and register form submissions
   document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
@@ -129,34 +157,40 @@
           const result = await response.json();
           
           if (result.success) {
-            showMessage('Login successful! Redirecting...', false);
+            showMessage('login successful! redirecting...', false);
             setTimeout(() => {
               window.location.href = result.redirect || '/';
             }, 1500);
           } else {
-            showMessage(result.message || 'Login failed. Please check your credentials.', true);
+            showMessage(result.message || 'login failed. please check your credentials.', true);
           }
         } catch (error) {
-          showMessage('An error occurred. Please try again.', true);
+          showMessage('an error occurred. please try again.', true);
         }
       });
     }
 
-    // Handle register form submission
+    // handle register form submission
     if (registerForm) {
       registerForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const password = document.getElementById('registerPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
+        const locationId = document.getElementById('preferredLocation').value;
         
         if (password !== confirmPassword) {
-          showMessage('Passwords do not match.', true);
+          showMessage('passwords do not match.', true);
+          return;
+        }
+        
+        if (!locationId) {
+          showMessage('please select a location.', true);
           return;
         }
         
         const formData = new FormData(this);
-        formData.append('role', 'student'); // Default role for public registration
+        formData.append('role', 'student'); // default role for public registration
         
         try {
           const response = await fetch('/auth/register', {
@@ -167,21 +201,21 @@
           const result = await response.json();
           
           if (result.success) {
-            showMessage('Account created successfully! You can now sign in.', false);
+            showMessage('account created successfully! you can now sign in.', false);
             setTimeout(() => {
-              toggleForm(); // Switch back to login form
+              toggleForm(); // switch back to login form
             }, 2000);
           } else {
-            showMessage(result.message || 'Registration failed. Please try again.', true);
+            showMessage(result.message || 'registration failed. please try again.', true);
           }
         } catch (error) {
-          showMessage('An error occurred. Please try again.', true);
+          showMessage('an error occurred. please try again.', true);
         }
       });
     }
   });
 
-  // Close modal on Escape key
+  // close modal on escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeAuthModal();

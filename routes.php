@@ -4,6 +4,9 @@
 // Public routes
 $router->get('/', 'index.php');
 
+// API routes
+$router->get('/api/locations', 'api/locations.php');
+
 // Authentication routes
 $router->post('/auth/login', 'auth/login.php');
 $router->post('/auth/register', 'auth/register.php');
