@@ -43,7 +43,7 @@
       <?php else: ?>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
         <span class="text-base font-quicksand text-[#845d45]">
-          Welcome, <?= auth()['first_name'] ?>
+          welcome, <?= strtolower(auth()['first_name']) ?>
         </span>
         <a href="/auth/logout" class="text-base font-quicksand text-[#845d45] hover:text-white">log out</a>
         <?php if (isAdmin()): ?>
