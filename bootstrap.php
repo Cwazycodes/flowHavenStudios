@@ -3,6 +3,7 @@
 use Core\App;
 use Core\Container;
 use Core\Database;
+use Core\EmailService;
 use Core\User;
 use Core\Location;
 use Core\PasswordReset;
@@ -25,6 +26,10 @@ $container->bind('Core\Location', function () {
 
 $container->bind('Core\PasswordReset', function () {
     return new PasswordReset();
+});
+
+$container->bind('Core\EmailService', function() {
+    return new EmailService();
 });
 
 App::setContainer($container);

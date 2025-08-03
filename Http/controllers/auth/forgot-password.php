@@ -1,6 +1,8 @@
 <?php
 
 use Core\PasswordReset;
+use Core\EmailService;
+use Core\User;
 use Core\Validator;
 
 header('Content-Type: application/json');
@@ -32,24 +34,34 @@ if (!$passwordReset->emailExists($email)) {
 }
 
 try {
+    // get user info for personalization
+    $userModel = new User();
+    $user = $userModel->findByEmail($email);
+    $userName = $user ? $user['first_name'] : '';
+    
     // create reset token
     $token = $passwordReset->createResetToken($email);
     
-    // in a real application, you would send an email here
-    // for now, we'll just log it or return it for testing
-    // TODO: implement email sending
+    // send email
+    $emailService = new EmailService();
+    $emailResult = $emailService->sendPasswordReset($email, $token, $userName);
     
-    // for development/testing, you could log the reset link:
-    error_log("password reset link: " . "http://localhost:8000/reset-password?token=" . $token);
-    
-    echo json_encode([
-        'success' => true,
-        'message' => 'if an account with that email exists, you will receive password reset instructions.',
-        // remove this in production:
-        'debug_reset_link' => "http://localhost:8000/reset-password?token=" . $token
-    ]);
+    if ($emailResult['success']) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'password reset instructions have been sent to your email address.'
+        ]);
+    } else {
+        // log the error but don't reveal it to user
+        error_log("Password reset email failed: " . ($emailResult['error'] ?? 'unknown error'));
+        echo json_encode([
+            'success' => true, // still return success for security
+            'message' => 'if an account with that email exists, you will receive password reset instructions.'
+        ]);
+    }
     
 } catch (Exception $e) {
+    error_log("Password reset error: " . $e->getMessage());
     echo json_encode([
         'success' => false,
         'message' => 'an error occurred. please try again.'

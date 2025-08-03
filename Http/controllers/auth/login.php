@@ -52,5 +52,3 @@ if ($auth->attempt($email, $password)) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid email or password']);
 }
-
-?>

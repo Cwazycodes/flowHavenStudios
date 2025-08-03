@@ -59,4 +59,3 @@ try {
         'message' => 'an error occurred. please try again.'
     ]);
 }
-
