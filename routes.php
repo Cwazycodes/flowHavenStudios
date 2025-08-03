@@ -27,6 +27,7 @@ $router->post('/admin/upload-profile-image', 'upload-profile-image.php')->only('
 // Instructor routes
 $router->get('/instructor/dashboard', 'instructor/dashboard.php')->only('instructor');
 $router->get('/instructor/classes', 'instructor/classes.php')->only('instructor');
+$router->get('/instructor/calendar-data', 'instructor/calendar-data.php')->only('instructor');
 $router->post('/instructor/create-slot', 'instructor/create-slot.php')->only('instructor');
 $router->post('/instructor/cancel-slot', 'instructor/cancel-slot.php')->only('instructor');
 $router->post('/instructor/update-profile', 'instructor/update-profile.php')->only('instructor');

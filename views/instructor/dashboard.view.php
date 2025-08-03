@@ -106,64 +106,83 @@
 
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Upcoming Slots -->
+            <!-- Calendar View -->
             <div class="lg:col-span-2">
                 <div class="bg-white shadow-md rounded-lg border border-[#e8d7c3]">
-                    <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
-                        <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">upcoming slots</h3>
+                    <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4] flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">class schedule</h3>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="changeMonth(-1)" class="p-2 rounded-md hover:bg-[#e8d7c3] text-[#845d45] transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <span id="currentMonthYear" class="text-lg font-medium text-[#2b2a24] font-quicksand min-w-[150px] text-center">
+                                <?= date('F Y', strtotime($current_month . '-01')) ?>
+                            </span>
+                            <button onclick="changeMonth(1)" class="p-2 rounded-md hover:bg-[#e8d7c3] text-[#845d45] transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <div class="overflow-hidden">
-                        <div class="max-h-96 overflow-y-auto">
-                            <table class="min-w-full divide-y divide-[#e8d7c3]">
-                                <thead class="bg-[#f9f7f4] sticky top-0">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-[#845d45] uppercase tracking-wider font-quicksand">date & time</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-[#845d45] uppercase tracking-wider font-quicksand">beds</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-[#845d45] uppercase tracking-wider font-quicksand">students</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-[#845d45] uppercase tracking-wider font-quicksand">status</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-[#845d45] uppercase tracking-wider font-quicksand">actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-[#e8d7c3]">
-                                    <?php foreach ($upcoming_slots as $slot): ?>
-                                    <tr class="hover:bg-[#f9f7f4] transition">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand">
-                                            <div>
-                                                <div class="font-medium"><?= date('M j, Y', strtotime($slot['start_time'])) ?></div>
-                                                <div class="text-[#845d45]"><?= date('g:i A', strtotime($slot['start_time'])) ?> - <?= date('g:i A', strtotime($slot['end_time'])) ?></div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand">
-                                            <span class="font-medium"><?= $slot['booked_beds'] ?>/<?= $slot['available_beds'] ?></span>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-[#2b2a24] font-quicksand">
-                                            <?php if ($slot['student_names']): ?>
-                                                <div class="max-w-xs truncate" title="<?= htmlspecialchars($slot['student_names']) ?>">
-                                                    <?= htmlspecialchars($slot['student_names']) ?>                                           
-                                                </div>
-                                            <?php else: ?>
-                                                <span class="text-[#845d45] italic">no bookings yet</span>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                <?= $slot['status'] === 'scheduled' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' ?> font-quicksand">
-                                                <?= $slot['status'] ?>
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                            <button onclick="viewSlotDetails(<?= $slot['id'] ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">view</button>
-                                            <button onclick="editSlot(<?= $slot['id'] ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">edit</button>
-                                            <button onclick="cancelSlot(<?= $slot['id'] ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">cancel</button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                    
+                    <!-- Calendar Grid -->
+                    <div class="p-6">
+                        <div class="grid grid-cols-7 gap-px bg-[#e8d7c3] rounded-lg overflow-hidden">
+                            <!-- Day Headers -->
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">sun</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">mon</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">tue</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">wed</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">thu</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">fri</span>
+                            </div>
+                            <div class="bg-[#f9f7f4] p-3 text-center">
+                                <span class="text-sm font-medium text-[#845d45] font-quicksand">sat</span>
+                            </div>
+                            
+                            <!-- Calendar Days -->
+                            <div id="calendarDays" class="contents">
+                                <!-- Days will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Legend -->
+                        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-4 h-4 bg-[#845d45] rounded"></div>
+                                <span class="text-[#845d45] font-quicksand">your slots</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-4 h-4 bg-gray-300 rounded"></div>
+                                <span class="text-[#845d45] font-quicksand">other instructors</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-4 h-4 bg-green-200 border-2 border-green-500 rounded"></div>
+                                <span class="text-[#845d45] font-quicksand">fully booked</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+<!-- Hidden data script for slots -->
+<script type="application/json" id="slotsData">
+<?= json_encode($slots_by_date, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>
+</script>
 
             <!-- Quick Actions & Profile -->
             <div class="space-y-6">
@@ -247,6 +266,27 @@
     </div>
 </div>
 
+<!-- Slot Details Modal -->
+<div id="slotDetailsModal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeSlotDetailsModal()"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3] relative">
+            <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
+                <h3 id="slotModalTitle" class="text-lg font-medium text-[#2b2a24] font-quicksand">class details</h3>
+                <button onclick="closeSlotDetailsModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="slotDetailsContent" class="p-6">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Create Slot Modal -->
 <div id="createSlotModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeCreateSlotModal()"></div>
@@ -266,7 +306,7 @@
             <form id="createSlotForm" class="p-6 space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-[#845d45] font-quicksand">date</label>
-                    <input type="date" name="date" required min="<?= date('Y-m-d') ?>" class="mt-1 block w-full border-[#e8d7c3] rounded-md shadow-sm focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
+                    <input type="date" id="slotDate" name="date" required min="<?= date('Y-m-d') ?>" class="mt-1 block w-full border-[#e8d7c3] rounded-md shadow-sm focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -290,7 +330,10 @@
                     <label class="block text-sm font-medium text-[#845d45] font-quicksand">description (optional)</label>
                     <textarea name="description" rows="3" class="mt-1 block w-full border-[#e8d7c3] rounded-md shadow-sm focus:ring-[#845d45] focus:border-[#845d45] font-quicksand" placeholder="e.g., morning flow session"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium transition">
+                <div id="conflictWarning" class="hidden p-3 bg-red-100 border border-red-300 rounded-md">
+                    <p class="text-sm text-red-700 font-quicksand">⚠️ Another instructor has a class at this time. You cannot book this slot.</p>
+                </div>
+                <button type="submit" id="createSlotBtn" class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium transition">
                     create slot
                 </button>
             </form>
@@ -381,10 +424,280 @@
 </div>
 
 <script>
-// Modal functions
+// Calendar and slot data
+let currentDate = new Date('<?= $current_month ?>-01');
+let slotsData = {};
+let currentInstructorId = <?= auth()['id'] ?>;
+
+// Initialize calendar
+document.addEventListener('DOMContentLoaded', function() {
+    // Load slots data from hidden script element
+    try {
+        const slotsDataElement = document.getElementById('slotsData');
+        if (slotsDataElement) {
+            slotsData = JSON.parse(slotsDataElement.textContent);
+            console.log('Slots data loaded from script element:', slotsData);
+        } else {
+            console.error('Slots data element not found');
+            slotsData = {};
+        }
+    } catch (error) {
+        console.error('Error parsing slots data:', error);
+        slotsData = {};
+    }
+    
+    // Add a small delay to ensure DOM is fully ready
+    setTimeout(() => {
+        renderCalendar();
+        setupFormHandlers();
+    }, 100);
+});
+
+function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    console.log('=== RENDER CALENDAR DEBUG ===');
+    console.log('Rendering calendar for:', year, month + 1);
+    console.log('Current date object:', currentDate);
+    console.log('Slots data keys:', Object.keys(slotsData));
+    console.log('Slots data:', slotsData);
+    
+    // Update month/year display
+    const monthYearElement = document.getElementById('currentMonthYear');
+    if (monthYearElement) {
+        monthYearElement.textContent = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    }
+    
+    // Get first day of month and number of days
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDayOfWeek = firstDay.getDay();
+    
+    // Get previous month days to fill in
+    const prevMonth = new Date(year, month, 0);
+    const daysInPrevMonth = prevMonth.getDate();
+    
+    const calendarDays = document.getElementById('calendarDays');
+    if (!calendarDays) {
+        console.error('Calendar days element not found!');
+        return;
+    }
+    
+    calendarDays.innerHTML = '';
+    
+    // Add previous month's trailing days
+    for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+        const day = daysInPrevMonth - i;
+        const dayDiv = createDayElement(day, true, year, month - 1);
+        calendarDays.appendChild(dayDiv);
+    }
+    
+    // Add current month days
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = createDayElement(day, false, year, month);
+        calendarDays.appendChild(dayDiv);
+    }
+    
+    // Add next month's leading days to fill the grid
+    const totalCells = calendarDays.children.length;
+    const remainingCells = 42 - totalCells; // 6 rows × 7 days
+    for (let day = 1; day <= remainingCells && remainingCells < 7; day++) {
+        const dayDiv = createDayElement(day, true, year, month + 1);
+        calendarDays.appendChild(dayDiv);
+    }
+    
+    console.log('=== END RENDER CALENDAR DEBUG ===');
+}
+
+function createDayElement(day, isOtherMonth, year, month) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const isToday = dateStr === new Date().toISOString().split('T')[0];
+    const isPast = new Date(dateStr) < new Date().setHours(0, 0, 0, 0);
+    
+    console.log('Creating day element for:', dateStr, 'Has slots:', !!slotsData[dateStr]); // Debug log
+    
+    const dayDiv = document.createElement('div');
+    dayDiv.className = `bg-white min-h-[120px] p-2 ${isOtherMonth ? 'text-gray-400' : 'text-[#2b2a24]'} ${isPast && !isOtherMonth ? 'bg-gray-50' : ''}`;
+    
+    // Day number
+    const dayNumber = document.createElement('div');
+    dayNumber.className = `text-sm font-medium mb-2 ${isToday ? 'w-6 h-6 bg-[#845d45] text-white rounded-full flex items-center justify-center' : ''}`;
+    dayNumber.textContent = day;
+    dayDiv.appendChild(dayNumber);
+    
+    // Add slots for this date - ensure we check slotsData properly
+    if (!isOtherMonth && slotsData && slotsData[dateStr] && Array.isArray(slotsData[dateStr])) {
+        console.log('Adding slots for date:', dateStr, 'Slots:', slotsData[dateStr]); // Debug log
+        const slotsContainer = document.createElement('div');
+        slotsContainer.className = 'space-y-1';
+        
+        slotsData[dateStr].forEach(slot => {
+            const slotElement = createSlotElement(slot);
+            slotsContainer.appendChild(slotElement);
+        });
+        
+        dayDiv.appendChild(slotsContainer);
+    }
+    
+    // Add click handler for empty days (for creating new slots)
+    if (!isOtherMonth && !isPast) {
+        dayDiv.addEventListener('click', function(e) {
+            if (e.target === dayDiv || e.target === dayNumber) {
+                openCreateSlotModalForDate(dateStr);
+            }
+        });
+        dayDiv.classList.add('cursor-pointer', 'hover:bg-[#f9f7f4]');
+    }
+    
+    return dayDiv;
+}
+
+function createSlotElement(slot) {
+    const isOwnSlot = slot.instructor_id == currentInstructorId;
+    const isFullyBooked = slot.booked_beds >= slot.available_beds;
+    const startTime = new Date(slot.start_time).toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
+    });
+    
+    const slotDiv = document.createElement('div');
+    slotDiv.className = `text-xs p-1 rounded cursor-pointer transition-colors ${
+        isOwnSlot 
+            ? (isFullyBooked ? 'bg-green-200 border-2 border-green-500 text-green-800' : 'bg-[#845d45] text-white hover:bg-[#6e4635]')
+            : 'bg-gray-300 text-gray-700'
+    }`;
+    
+    if (isOwnSlot) {
+        slotDiv.innerHTML = `
+            <div class="font-medium">${startTime}</div>
+            <div>${slot.booked_beds}/${slot.available_beds} beds</div>
+        `;
+        slotDiv.addEventListener('click', () => openSlotDetails(slot));
+    } else {
+        // Show other instructor's initials
+        const initials = slot.instructor_first_name.charAt(0) + slot.instructor_last_name.charAt(0);
+        slotDiv.innerHTML = `
+            <div class="font-medium">${initials}</div>
+            <div>${startTime}</div>
+        `;
+    }
+    
+    return slotDiv;
+}
+
+function changeMonth(direction) {
+    currentDate.setMonth(currentDate.getMonth() + direction);
+    
+    // Fetch new data for the month
+    const monthStr = currentDate.getFullYear() + '-' + String(currentDate.getMonth() + 1).padStart(2, '0');
+    fetchCalendarData(monthStr);
+}
+
+async function fetchCalendarData(monthStr) {
+    try {
+        console.log('Fetching calendar data for month:', monthStr); // Debug log
+        const response = await fetch(`/instructor/calendar-data?month=${monthStr}`);
+        const result = await response.json();
+        
+        console.log('Fetched calendar data:', result); // Debug log
+        
+        if (result.success) {
+            slotsData = result.slots_by_date;
+            renderCalendar();
+        } else {
+            console.error('Failed to fetch calendar data:', result.message);
+        }
+    } catch (error) {
+        console.error('Error fetching calendar data:', error);
+    }
+}
+
+function openSlotDetails(slot) {
+    const modal = document.getElementById('slotDetailsModal');
+    const title = document.getElementById('slotModalTitle');
+    const content = document.getElementById('slotDetailsContent');
+    
+    const startTime = new Date(slot.start_time);
+    const endTime = new Date(slot.end_time);
+    
+    title.textContent = `Class on ${startTime.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    })}`;
+    
+    content.innerHTML = `
+        <div class="space-y-4">
+            <div class="bg-[#f9f7f4] p-4 rounded-lg">
+                <h4 class="font-medium text-[#2b2a24] font-quicksand mb-2">class information</h4>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="font-medium text-[#845d45] font-quicksand">time:</span>
+                        <span class="text-[#2b2a24] font-quicksand">${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })} - ${endTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div>
+                        <span class="font-medium text-[#845d45] font-quicksand">beds:</span>
+                        <span class="text-[#2b2a24] font-quicksand">${slot.booked_beds}/${slot.available_beds}</span>
+                    </div>
+                    <div>
+                        <span class="font-medium text-[#845d45] font-quicksand">type:</span>
+                        <span class="text-[#2b2a24] font-quicksand">${slot.class_type}</span>
+                    </div>
+                    <div>
+                        <span class="font-medium text-[#845d45] font-quicksand">status:</span>
+                        <span class="text-[#2b2a24] font-quicksand">${slot.status}</span>
+                    </div>
+                </div>
+                ${slot.description ? `<div class="mt-2"><span class="font-medium text-[#845d45] font-quicksand">description:</span> <span class="text-[#2b2a24] font-quicksand">${slot.description}</span></div>` : ''}
+            </div>
+            
+            <div>
+                <h4 class="font-medium text-[#2b2a24] font-quicksand mb-3">booked students (${slot.students.length})</h4>
+                ${slot.students.length > 0 ? 
+                    `<div class="space-y-2">
+                        ${slot.students.map(student => `
+                            <div class="flex justify-between items-center p-2 bg-white border border-[#e8d7c3] rounded">
+                                <span class="text-[#2b2a24] font-quicksand">${student.name}</span>
+                                <button onclick="cancelStudentBooking(${student.booking_id}, '${student.name}')" class="text-red-600 hover:text-red-800 text-sm font-quicksand">cancel</button>
+                            </div>
+                        `).join('')}
+                    </div>` : 
+                    '<p class="text-[#845d45] font-quicksand text-sm italic">no students booked yet</p>'
+                }
+            </div>
+            
+            <div class="flex space-x-3 pt-4 border-t border-[#e8d7c3]">
+                <button onclick="editSlot(${slot.id})" class="flex-1 bg-[#e8d7c3] text-[#845d45] px-4 py-2 rounded-md hover:bg-[#845d45] hover:text-white font-quicksand font-medium transition">
+                    edit slot
+                </button>
+                <button onclick="cancelSlot(${slot.id})" class="flex-1 bg-red-100 text-red-700 px-4 py-2 rounded-md hover:bg-red-200 font-quicksand font-medium transition">
+                    cancel slot
+                </button>
+            </div>
+        </div>
+    `;
+    
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function openCreateSlotModalForDate(dateStr) {
+    document.getElementById('slotDate').value = dateStr;
+    openCreateSlotModal();
+}
+
 function openCreateSlotModal() {
     document.getElementById('createSlotModal').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+}
+
+function closeSlotDetailsModal() {
+    document.getElementById('slotDetailsModal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
 }
 
 function closeCreateSlotModal() {
@@ -392,11 +705,7 @@ function closeCreateSlotModal() {
     document.body.style.overflow = 'auto';
     document.getElementById('createSlotForm').reset();
     hideSlotMessage();
-}
-
-function openUploadProfileModal() {
-    document.getElementById('uploadProfileModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+    hideConflictWarning();
 }
 
 function closeUploadProfileModal() {
@@ -415,6 +724,11 @@ function closeProfileModal() {
     document.getElementById('profileModal').classList.add('hidden');
     document.body.style.overflow = 'auto';
     hideProfileMessage();
+}
+
+function openUploadProfileModal() {
+    document.getElementById('uploadProfileModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
 }
 
 // Message functions
@@ -451,87 +765,165 @@ function hideProfileMessage() {
     document.getElementById('profileMessage').classList.add('hidden');
 }
 
-// Form submissions
-document.getElementById('createSlotForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    
-    try {
-        const response = await fetch('/instructor/create-slot', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            showSlotMessage('slot created successfully!', false);
-            setTimeout(() => {
-                closeCreateSlotModal();
-                location.reload();
-            }, 2000);
-        } else {
-            showSlotMessage(result.message || 'failed to create slot', true);
-        }
-    } catch (error) {
-        showSlotMessage('an error occurred. please try again.', true);
-    }
-});
+function showConflictWarning() {
+    document.getElementById('conflictWarning').classList.remove('hidden');
+    document.getElementById('createSlotBtn').disabled = true;
+    document.getElementById('createSlotBtn').classList.add('opacity-50', 'cursor-not-allowed');
+}
 
-document.getElementById('uploadProfileForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    
-    try {
-        const response = await fetch('/instructor/upload-profile-image', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            showUploadMessage('profile picture updated successfully!', false);
-            setTimeout(() => {
-                closeUploadProfileModal();
-                location.reload();
-            }, 2000);
-        } else {
-            showUploadMessage(result.message || 'failed to upload image', true);
-        }
-    } catch (error) {
-        showUploadMessage('an error occurred. please try again.', true);
-    }
-});
+function hideConflictWarning() {
+    document.getElementById('conflictWarning').classList.add('hidden');
+    document.getElementById('createSlotBtn').disabled = false;
+    document.getElementById('createSlotBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+}
 
-document.getElementById('profileForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+// Check for time conflicts when creating slots
+function checkTimeConflict() {
+    const date = document.getElementById('slotDate').value;
+    const startTimeInput = document.querySelector('input[name="start_time"]');
+    const endTimeInput = document.querySelector('input[name="end_time"]');
     
-    const formData = new FormData(this);
+    if (!date || !startTimeInput.value || !endTimeInput.value) {
+        hideConflictWarning();
+        return;
+    }
     
-    try {
-        const response = await fetch('/instructor/update-profile', {
-            method: 'POST',
-            body: formData
+    const startDateTime = new Date(`${date}T${startTimeInput.value}`);
+    const endDateTime = new Date(`${date}T${endTimeInput.value}`);
+    
+    // Check if any existing slots conflict with this time
+    const slotsOnDate = slotsData[date] || [];
+    let hasConflict = false;
+    
+    for (const slot of slotsOnDate) {
+        const slotStart = new Date(slot.start_time);
+        const slotEnd = new Date(slot.end_time);
+        
+        // Check if times overlap
+        if ((startDateTime >= slotStart && startDateTime < slotEnd) ||
+            (endDateTime > slotStart && endDateTime <= slotEnd) ||
+            (startDateTime <= slotStart && endDateTime >= slotEnd)) {
+            hasConflict = true;
+            break;
+        }
+    }
+    
+    if (hasConflict) {
+        showConflictWarning();
+    } else {
+        hideConflictWarning();
+    }
+}
+
+function setupFormHandlers() {
+    // Create Slot Form
+    const createSlotForm = document.getElementById('createSlotForm');
+    if (createSlotForm) {
+        // Add time conflict checking
+        const dateInput = document.getElementById('slotDate');
+        const startTimeInput = document.querySelector('input[name="start_time"]');
+        const endTimeInput = document.querySelector('input[name="end_time"]');
+        
+        [dateInput, startTimeInput, endTimeInput].forEach(input => {
+            if (input) {
+                input.addEventListener('change', checkTimeConflict);
+            }
         });
         
-        const result = await response.json();
-        
-        if (result.success) {
-            showProfileMessage('profile updated successfully!', false);
-            setTimeout(() => {
-                closeProfileModal();
-                location.reload();
-            }, 2000);
-        } else {
-            showProfileMessage(result.message || 'failed to update profile', true);
-        }
-    } catch (error) {
-        showProfileMessage('an error occurred. please try again.', true);
+        createSlotForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (document.getElementById('createSlotBtn').disabled) {
+                return;
+            }
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/instructor/create-slot', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSlotMessage('slot created successfully!', false);
+                    setTimeout(() => {
+                        closeCreateSlotModal();
+                        location.reload();
+                    }, 2000);
+                } else {
+                    showSlotMessage(result.message || 'failed to create slot', true);
+                }
+            } catch (error) {
+                showSlotMessage('an error occurred. please try again.', true);
+            }
+        });
     }
-});
+
+    // Upload Profile Form
+    const uploadProfileForm = document.getElementById('uploadProfileForm');
+    if (uploadProfileForm) {
+        uploadProfileForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/instructor/upload-profile-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showUploadMessage('profile picture updated successfully!', false);
+                    setTimeout(() => {
+                        closeUploadProfileModal();
+                        location.reload();
+                    }, 2000);
+                } else {
+                    showUploadMessage(result.message || 'failed to upload image', true);
+                }
+            } catch (error) {
+                showUploadMessage('an error occurred. please try again.', true);
+            }
+        });
+    }
+
+    // Profile Form
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/instructor/update-profile', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showProfileMessage('profile updated successfully!', false);
+                    setTimeout(() => {
+                        closeProfileModal();
+                        location.reload();
+                    }, 2000);
+                } else {
+                    showProfileMessage(result.message || 'failed to update profile', true);
+                }
+            } catch (error) {
+                showProfileMessage('an error occurred. please try again.', true);
+            }
+        });
+    }
+}
 
 // Action functions
 async function cancelSlot(slotId) {
@@ -551,6 +943,7 @@ async function cancelSlot(slotId) {
         const result = await response.json();
         
         if (result.success) {
+            closeSlotDetailsModal();
             location.reload();
         } else {
             alert('failed to cancel slot: ' + result.message);
@@ -560,9 +953,31 @@ async function cancelSlot(slotId) {
     }
 }
 
-function viewSlotDetails(slotId) {
-    // This would open a slot details modal - implement as needed
-    alert('slot details view coming soon');
+async function cancelStudentBooking(bookingId, studentName) {
+    if (!confirm(`are you sure you want to cancel ${studentName}'s booking?`)) {
+        return;
+    }
+    
+    try {
+        const response = await fetch('/admin/cancel-booking', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ booking_id: bookingId })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            closeSlotDetailsModal();
+            location.reload();
+        } else {
+            alert('failed to cancel booking: ' + result.message);
+        }
+    } catch (error) {
+        alert('an error occurred while cancelling the booking');
+    }
 }
 
 function editSlot(slotId) {
@@ -576,8 +991,26 @@ document.addEventListener('keydown', function(e) {
         closeCreateSlotModal();
         closeUploadProfileModal();
         closeProfileModal();
+        closeSlotDetailsModal();
     }
+});
+
+// Prevent modal close when clicking inside modal content
+document.addEventListener('DOMContentLoaded', function() {
+    const modals = ['createSlotModal', 'uploadProfileModal', 'profileModal', 'slotDetailsModal'];
+    
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            const modalContent = modal.querySelector('.bg-white');
+            if (modalContent) {
+                modalContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        }
+    });
 });
 </script>
 
-<?php include base_path('views/partials/footer.php');
+<?php include base_path('views/partials/footer.php'); ?>
