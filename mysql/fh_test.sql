@@ -1,21 +1,21 @@
--- -- -------------------------------------------------------------
--- -- TablePlus 6.6.8(632)
--- --
--- -- https://tableplus.com/
--- --
--- -- Database: fh_test
--- -- Generation Time: 2025-08-03 17:12:25.9910
--- -- -------------------------------------------------------------
+-- -------------------------------------------------------------
+-- TablePlus 6.6.8(632)
+--
+-- https://tableplus.com/
+--
+-- Database: fh_test
+-- Generation Time: 2025-08-03 22:22:58.2740
+-- -------------------------------------------------------------
 
 
--- /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
--- /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
--- /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
--- /*!40101 SET NAMES utf8mb4 */;
--- /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
--- /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
--- /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
--- /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- CREATE TABLE `bookings` (
@@ -60,7 +60,7 @@
 --   KEY `start_time` (`start_time`),
 --   CONSTRAINT `class_slots_ibfk_1` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
 --   CONSTRAINT `class_slots_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`)
--- ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- CREATE TABLE `email_verification_tokens` (
 --   `id` int NOT NULL AUTO_INCREMENT,
@@ -90,6 +90,7 @@
 --   CONSTRAINT `instructor_profiles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 -- ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- DROP TABLE IF EXISTS `locations`;
 -- CREATE TABLE `locations` (
 --   `id` int NOT NULL AUTO_INCREMENT,
 --   `name` varchar(100) NOT NULL,
@@ -164,10 +165,11 @@
 -- (2, 2, 1, '2025-08-04 10:30:00', '2025-08-04 11:20:00', 6, 'reformer pilates', 'intermediate level class', 'scheduled', '2025-08-03 16:04:18', '2025-08-03 16:04:18'),
 -- (3, 2, 1, '2025-08-04 18:00:00', '2025-08-04 18:50:00', 6, 'reformer pilates', 'evening strength and flow', 'scheduled', '2025-08-03 16:04:18', '2025-08-03 16:04:18'),
 -- (4, 2, 1, '2025-08-05 09:00:00', '2025-08-05 09:50:00', 6, 'reformer pilates', 'morning energizer', 'scheduled', '2025-08-03 16:04:18', '2025-08-03 16:04:18'),
--- (5, 2, 1, '2025-08-05 17:30:00', '2025-08-05 18:20:00', 6, 'reformer pilates', 'after work flow', 'scheduled', '2025-08-03 16:04:18', '2025-08-03 16:04:18');
+-- (5, 2, 1, '2025-08-05 17:30:00', '2025-08-05 18:20:00', 6, 'reformer pilates', 'after work flow', 'scheduled', '2025-08-03 16:04:18', '2025-08-03 16:04:18'),
+-- (6, 2, 1, '2025-08-06 09:00:00', '2025-08-06 09:50:00', 6, 'reformer pilates', 'test', 'scheduled', '2025-08-03 19:58:19', '2025-08-03 19:58:19');
 
 -- INSERT INTO `instructor_profiles` (`id`, `user_id`, `bio`, `specializations`, `certifications`, `profile_image`, `instagram_handle`, `is_featured`, `created_at`, `updated_at`) VALUES
--- (1, 2, 'Certified Pilates instructor with over 5 years of experience in reformer pilates.', 'Reformer Pilates, Mat Pilates, Injury Rehabilitation', 'BASI Pilates Comprehensive, Anatomy & Physiology Certified', NULL, NULL, 1, '2025-07-31 23:19:55', '2025-07-31 23:19:55');
+-- (1, 2, 'test', 'test', 'test', NULL, '@test', 1, '2025-07-31 23:19:55', '2025-08-03 20:01:03');
 
 -- INSERT INTO `locations` (`id`, `name`, `address`, `phone`, `email`, `status`, `created_at`, `updated_at`) VALUES
 -- (1, 'bethnal green', '115 Coventry Road, London, E2 6GB', '+44 20 7946 0958', 'bethnalgreen@flowhaven.com', 'active', '2025-08-02 19:48:25', '2025-08-02 19:49:44');
@@ -178,17 +180,17 @@
 -- (3, 4, 1, NULL, 'test', '07972537885', 'test', 'beginner', 1, '2025-08-03 17:06:51', '2025-08-03 17:06:51');
 
 -- INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phone`, `profile_image`, `role`, `location_id`, `status`, `email_verified`, `created_at`, `updated_at`, `reset_requested_at`) VALUES
--- (1, 'admin@flowhaven.com', '$2y$10$FdeoIXns5wXisN5ge0O4F.Oj1RssS/U1WHugltPYbtwjZaKXH8ZY6', 'Flow', 'Admin', NULL, NULL, 'admin', 1, 'active', 1, '2025-07-31 23:19:55', '2025-08-03 17:10:25', NULL),
--- (2, 'instructor@flowhaven.com', '$2y$10$FdeoIXns5wXisN5ge0O4F.Oj1RssS/U1WHugltPYbtwjZaKXH8ZY6', 'Sarah', 'Johnson', NULL, NULL, 'instructor', 1, 'active', 1, '2025-07-31 23:19:55', '2025-08-03 17:11:10', NULL),
+-- (1, 'admin@flowhaven.com', '$2y$10$FdeoIXns5wXisN5ge0O4F.Oj1RssS/U1WHugltPYbtwjZaKXH8ZY6', 'Flow', 'Admin', NULL, NULL, 'admin', 1, 'active', 1, '2025-07-31 23:19:55', '2025-08-03 17:13:49', NULL),
+-- (2, 'instructor@flowhaven.com', '$2y$10$FdeoIXns5wXisN5ge0O4F.Oj1RssS/U1WHugltPYbtwjZaKXH8ZY6', 'Sarah', 'Johnson', NULL, '/uploads/profiles/profile_2_1754255223.jpeg', 'instructor', 1, 'active', 1, '2025-07-31 23:19:55', '2025-08-03 22:07:03', NULL),
 -- (3, 'student@flowhaven.com', '$2y$10$E9P8.5GkOgYYgUF6M4Hx.ej.NjEYpJ7vK7KjPl4nZbYYgcvxB5JOC', 'Emma', 'Wilson', NULL, NULL, 'student', 1, 'active', 1, '2025-07-31 23:19:55', '2025-08-02 19:48:25', NULL),
 -- (4, 'mhussain2002@icloud.com', '$2y$12$RmFLKShjGUOtPOzRMrhpQuYwoRTBIbYFmosd4MM1TbKBMXPHItave', 'Muhammad', 'Hussain', '07907868997', '/uploads/profiles/profile_4_1754237283.jpeg', 'student', 1, 'active', 0, '2025-07-31 23:23:28', '2025-08-03 17:08:03', NULL);
 
 
 
--- /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
--- /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
--- /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
--- /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
--- /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
--- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
--- /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

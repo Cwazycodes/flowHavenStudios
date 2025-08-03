@@ -23,7 +23,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-[#845d45] truncate font-quicksand">total users</dt>
-                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_users'] ?></dd>
+                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_users'] ?? 0 ?></dd>
                             </dl>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-[#845d45] truncate font-quicksand">students</dt>
-                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_students'] ?></dd>
+                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_students'] ?? 0 ?></dd>
                             </dl>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-[#845d45] truncate font-quicksand">instructors</dt>
-                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_instructors'] ?></dd>
+                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['total_instructors'] ?? 0 ?></dd>
                             </dl>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-[#845d45] truncate font-quicksand">today's bookings</dt>
-                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['todays_bookings'] ?></dd>
+                                <dd class="text-lg font-semibold text-[#2b2a24] font-quicksand"><?= $stats['todays_bookings'] ?? 0 ?></dd>
                             </dl>
                         </div>
                     </div>
@@ -114,6 +114,7 @@
                     </div>
                     <div class="overflow-hidden">
                         <div class="max-h-96 overflow-y-auto">
+                            <?php if (!empty($recent_bookings)): ?>
                             <table class="min-w-full divide-y divide-[#e8d7c3]">
                                 <thead class="bg-[#f9f7f4] sticky top-0">
                                     <tr>
@@ -127,24 +128,29 @@
                                 <tbody class="bg-white divide-y divide-[#e8d7c3]">
                                     <?php foreach ($recent_bookings as $booking): ?>
                                     <tr class="hover:bg-[#f9f7f4] transition">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($booking['student_name']) ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($booking['instructor_name']) ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($booking['student_name'] ?? 'Unknown') ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($booking['instructor_name'] ?? 'Unknown') ?></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand">
-                                            <?= date('M j, Y g:i A', strtotime($booking['start_time'])) ?>
+                                            <?= isset($booking['start_time']) ? date('M j, Y g:i A', strtotime($booking['start_time'])) : 'N/A' ?>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                                <?= $booking['status'] === 'confirmed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' ?> font-quicksand">
-                                                <?= $booking['status'] ?>
+                                                <?= ($booking['status'] ?? '') === 'confirmed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' ?> font-quicksand">
+                                                <?= htmlspecialchars($booking['status'] ?? 'pending') ?>
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <button onclick="cancelBooking(<?= $booking['id'] ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">cancel</button>
+                                            <button onclick="cancelBooking(<?= $booking['id'] ?? 0 ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">cancel</button>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <?php else: ?>
+                            <div class="p-6 text-center">
+                                <p class="text-[#845d45] font-quicksand">no recent bookings found</p>
+                            </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -159,18 +165,24 @@
                     </div>
                     <div class="p-6">
                         <div class="max-h-64 overflow-y-auto space-y-3">
-                            <?php foreach (array_slice($upcoming_slots, 0, 5) as $slot): ?>
-                            <div class="flex justify-between items-center py-2 border-b border-[#e8d7c3] last:border-b-0">
-                                <div>
-                                    <p class="text-sm font-medium text-[#2b2a24] font-quicksand"><?= htmlspecialchars($slot['instructor_name']) ?></p>
-                                    <p class="text-xs text-[#845d45] font-quicksand"><?= date('M j, g:i A', strtotime($slot['start_time'])) ?></p>
+                            <?php if (!empty($upcoming_slots)): ?>
+                                <?php foreach (array_slice($upcoming_slots, 0, 5) as $slot): ?>
+                                <div class="flex justify-between items-center py-2 border-b border-[#e8d7c3] last:border-b-0">
+                                    <div>
+                                        <p class="text-sm font-medium text-[#2b2a24] font-quicksand"><?= htmlspecialchars($slot['instructor_name'] ?? 'Unknown') ?></p>
+                                        <p class="text-xs text-[#845d45] font-quicksand">
+                                            <?= isset($slot['start_time']) ? date('M j, g:i A', strtotime($slot['start_time'])) : 'No time set' ?>
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm font-medium text-[#2b2a24] font-quicksand"><?= ($slot['booked_beds'] ?? 0) ?>/<?= ($slot['available_beds'] ?? 0) ?></p>
+                                        <p class="text-xs text-[#845d45] font-quicksand">beds</p>
+                                    </div>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-sm font-medium text-[#2b2a24] font-quicksand"><?= $slot['booked_beds'] ?>/<?= $slot['available_beds'] ?></p>
-                                    <p class="text-xs text-[#845d45] font-quicksand">beds</p>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="text-[#845d45] font-quicksand text-sm text-center">no upcoming classes</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -208,7 +220,7 @@
 <div id="createInstructorModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeCreateInstructorModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">create instructor account</h3>
                 <button onclick="closeCreateInstructorModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -271,7 +283,7 @@
 <div id="uploadProfileModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeUploadProfileModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">update profile picture</h3>
                 <button onclick="closeUploadProfileModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -308,7 +320,7 @@
 <div id="manageUsersModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeManageUsersModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">manage users</h3>
                 <button onclick="closeManageUsersModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -322,15 +334,16 @@
                 <!-- Tab Navigation -->
                 <div class="flex space-x-1 mb-6">
                     <button onclick="showUserTab('instructors')" id="instructorsTab" class="px-3 py-2 text-sm font-medium rounded-md bg-[#845d45] text-white font-quicksand">
-                        instructors (<?= count($instructors) ?>)
+                        instructors (<?= count($instructors ?? []) ?>)
                     </button>
                     <button onclick="showUserTab('students')" id="studentsTab" class="px-3 py-2 text-sm font-medium rounded-md text-[#845d45] hover:bg-[#e8d7c3] font-quicksand">
-                        students (<?= count($students) ?>)
+                        students (<?= count($students ?? []) ?>)
                     </button>
                 </div>
 
                 <!-- Instructors Tab -->
                 <div id="instructorsContent" class="max-h-96 overflow-y-auto">
+                    <?php if (!empty($instructors)): ?>
                     <table class="min-w-full divide-y divide-[#e8d7c3]">
                         <thead class="bg-[#f9f7f4] sticky top-0">
                             <tr>
@@ -345,27 +358,33 @@
                             <?php foreach ($instructors as $instructor): ?>
                             <tr class="hover:bg-[#f9f7f4] transition">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand">
-                                    <?= htmlspecialchars($instructor['first_name'] . ' ' . $instructor['last_name']) ?>
+                                    <?= htmlspecialchars(($instructor['first_name'] ?? '') . ' ' . ($instructor['last_name'] ?? '')) ?>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($instructor['email']) ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($instructor['email'] ?? '') ?></td>
                                 <td class="px-6 py-4 text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($instructor['specializations'] ?? 'not specified') ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 font-quicksand">
-                                        <?= $instructor['status'] ?>
+                                        <?= htmlspecialchars($instructor['status'] ?? 'active') ?>
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                    <button onclick="editUser(<?= $instructor['id'] ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">edit</button>
-                                    <button onclick="deactivateUser(<?= $instructor['id'] ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">deactivate</button>
+                                    <button onclick="editUser(<?= $instructor['id'] ?? 0 ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">edit</button>
+                                    <button onclick="deactivateUser(<?= $instructor['id'] ?? 0 ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">deactivate</button>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?php else: ?>
+                    <div class="p-6 text-center">
+                        <p class="text-[#845d45] font-quicksand">no instructors found</p>
+                    </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Students Tab -->
                 <div id="studentsContent" class="max-h-96 overflow-y-auto hidden">
+                    <?php if (!empty($students)): ?>
                     <table class="min-w-full divide-y divide-[#e8d7c3]">
                         <thead class="bg-[#f9f7f4] sticky top-0">
                             <tr>
@@ -380,19 +399,24 @@
                             <?php foreach ($students as $student): ?>
                             <tr class="hover:bg-[#f9f7f4] transition">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand">
-                                    <?= htmlspecialchars($student['first_name'] . ' ' . $student['last_name']) ?>
+                                    <?= htmlspecialchars(($student['first_name'] ?? '') . ' ' . ($student['last_name'] ?? '')) ?>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($student['email']) ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($student['email'] ?? '') ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= htmlspecialchars($student['fitness_level'] ?? 'beginner') ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= $student['total_bookings'] ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#2b2a24] font-quicksand"><?= $student['total_bookings'] ?? 0 ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                    <button onclick="editUser(<?= $student['id'] ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">edit</button>
-                                    <button onclick="deactivateUser(<?= $student['id'] ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">deactivate</button>
+                                    <button onclick="editUser(<?= $student['id'] ?? 0 ?>)" class="text-[#845d45] hover:text-[#6e4635] font-quicksand transition">edit</button>
+                                    <button onclick="deactivateUser(<?= $student['id'] ?? 0 ?>)" class="text-red-600 hover:text-red-800 font-quicksand transition">deactivate</button>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?php else: ?>
+                    <div class="p-6 text-center">
+                        <p class="text-[#845d45] font-quicksand">no students found</p>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -478,64 +502,76 @@ function hideUploadMessage() {
 }
 
 // Form submissions
-document.getElementById('createInstructorForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    formData.append('role', 'instructor');
-    
-    try {
-        const response = await fetch('/admin/create-instructor', {
-            method: 'POST',
-            body: formData
+document.addEventListener('DOMContentLoaded', function() {
+    // Create Instructor Form
+    const createInstructorForm = document.getElementById('createInstructorForm');
+    if (createInstructorForm) {
+        createInstructorForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            formData.append('role', 'instructor');
+            
+            try {
+                const response = await fetch('/admin/create-instructor', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showInstructorMessage('instructor account created successfully!', false);
+                    setTimeout(() => {
+                        closeCreateInstructorModal();
+                        location.reload();
+                    }, 2000);
+                } else {
+                    showInstructorMessage(result.message || 'failed to create instructor account', true);
+                }
+            } catch (error) {
+                console.error('Error creating instructor:', error);
+                showInstructorMessage('an error occurred. please try again.', true);
+            }
         });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            showInstructorMessage('instructor account created successfully!', false);
-            setTimeout(() => {
-                closeCreateInstructorModal();
-                location.reload();
-            }, 2000);
-        } else {
-            showInstructorMessage(result.message || 'failed to create instructor account', true);
-        }
-    } catch (error) {
-        showInstructorMessage('an error occurred. please try again.', true);
     }
-});
 
-document.getElementById('uploadProfileForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    
-    try {
-        const response = await fetch('/admin/upload-profile-image', {
-            method: 'POST',
-            body: formData
+    // Upload Profile Form
+    const uploadProfileForm = document.getElementById('uploadProfileForm');
+    if (uploadProfileForm) {
+        uploadProfileForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/admin/upload-profile-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showUploadMessage('profile picture updated successfully!', false);
+                    setTimeout(() => {
+                        closeUploadProfileModal();
+                        location.reload();
+                    }, 2000);
+                } else {
+                    showUploadMessage(result.message || 'failed to upload image', true);
+                }
+            } catch (error) {
+                console.error('Error uploading image:', error);
+                showUploadMessage('an error occurred. please try again.', true);
+            }
         });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            showUploadMessage('profile picture updated successfully!', false);
-            setTimeout(() => {
-                closeUploadProfileModal();
-                location.reload();
-            }, 2000);
-        } else {
-            showUploadMessage(result.message || 'failed to upload image', true);
-        }
-    } catch (error) {
-        showUploadMessage('an error occurred. please try again.', true);
     }
 });
 
 // Action functions
 async function cancelBooking(bookingId) {
-    if (!confirm('are you sure you want to cancel this booking?')) {
+    if (!bookingId || !confirm('are you sure you want to cancel this booking?')) {
         return;
     }
     
@@ -553,9 +589,10 @@ async function cancelBooking(bookingId) {
         if (result.success) {
             location.reload();
         } else {
-            alert('failed to cancel booking: ' + result.message);
+            alert('failed to cancel booking: ' + (result.message || 'unknown error'));
         }
     } catch (error) {
+        console.error('Error cancelling booking:', error);
         alert('an error occurred while cancelling the booking');
     }
 }
@@ -566,7 +603,7 @@ async function editUser(userId) {
 }
 
 async function deactivateUser(userId) {
-    if (!confirm('are you sure you want to deactivate this user?')) {
+    if (!userId || !confirm('are you sure you want to deactivate this user?')) {
         return;
     }
     
@@ -584,9 +621,10 @@ async function deactivateUser(userId) {
         if (result.success) {
             location.reload();
         } else {
-            alert('failed to deactivate user: ' + result.message);
+            alert('failed to deactivate user: ' + (result.message || 'unknown error'));
         }
     } catch (error) {
+        console.error('Error deactivating user:', error);
         alert('an error occurred while deactivating the user');
     }
 }
@@ -599,6 +637,24 @@ document.addEventListener('keydown', function(e) {
         closeManageUsersModal();
     }
 });
+
+// Prevent modal close when clicking inside modal content
+document.addEventListener('DOMContentLoaded', function() {
+    // Prevent modal close when clicking modal content
+    const modals = ['createInstructorModal', 'uploadProfileModal', 'manageUsersModal'];
+    
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            const modalContent = modal.querySelector('.bg-white');
+            if (modalContent) {
+                modalContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        }
+    });
+});
 </script>
 
-<?php include base_path('views/partials/footer.php');
+<?php include base_path('views/partials/footer.php'); ?>

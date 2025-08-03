@@ -214,7 +214,7 @@
                     <div class="p-6">
                         <div class="text-center mb-4">
                             <div class="w-16 h-16 mx-auto bg-[#e8d7c3] rounded-full flex items-center justify-center mb-2">
-                                <?php if ($student_profile['profile_image']): ?>
+                                <?php if (!empty($student_profile['profile_image'])): ?>
                                     <img src="<?= htmlspecialchars($student_profile['profile_image']) ?>" alt="profile" class="w-16 h-16 rounded-full object-cover">
                                 <?php else: ?>
                                     <svg class="w-8 h-8 text-[#845d45]" fill="currentColor" viewBox="0 0 20 20">
@@ -232,14 +232,14 @@
                                 <span class="text-[#845d45] font-quicksand"><?= htmlspecialchars($student_profile['email']) ?></span>
                             </div>
                             
-                            <?php if ($student_profile['phone']): ?>
+                            <?php if (!empty($student_profile['phone'])): ?>
                             <div>
                                 <span class="font-medium text-[#2b2a24] font-quicksand">phone:</span>
                                 <span class="text-[#845d45] font-quicksand"><?= htmlspecialchars($student_profile['phone']) ?></span>
                             </div>
                             <?php endif; ?>
                             
-                            <?php if ($student_profile['preferred_location_name']): ?>
+                            <?php if (!empty($student_profile['preferred_location_name'])): ?>
                             <div>
                                 <span class="font-medium text-[#2b2a24] font-quicksand">preferred location:</span>
                                 <span class="text-[#845d45] font-quicksand"><?= htmlspecialchars($student_profile['preferred_location_name']) ?></span>
@@ -329,7 +329,7 @@
 <div id="bookClassModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeBookClassModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">book a class</h3>
                 <button onclick="closeBookClassModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -377,7 +377,7 @@
 <div id="uploadProfileModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeUploadProfileModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">update profile picture</h3>
                 <button onclick="closeUploadProfileModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -392,7 +392,7 @@
             <form id="uploadProfileForm" class="p-6 space-y-4">
                 <div class="text-center">
                     <div class="w-24 h-24 mx-auto bg-[#e8d7c3] rounded-full flex items-center justify-center mb-4">
-                        <?php if ($student_profile['profile_image']): ?>
+                        <?php if (!empty($student_profile['profile_image'])): ?>
                             <img src="<?= htmlspecialchars($student_profile['profile_image']) ?>" alt="current profile" class="w-24 h-24 rounded-full object-cover">
                         <?php else: ?>
                             <svg class="w-12 h-12 text-[#845d45]" fill="currentColor" viewBox="0 0 20 20">
@@ -418,7 +418,7 @@
 <div id="profileModal" class="fixed inset-0 z-50 hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onclick="closeProfileModal()"></div>
     <div class="fixed inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3]">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-[#e8d7c3] relative">
             <div class="px-6 py-4 border-b border-[#e8d7c3] bg-[#f9f7f4]">
                 <h3 class="text-lg font-medium text-[#2b2a24] font-quicksand">edit profile</h3>
                 <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-[#845d45] hover:text-[#6e4635]">
@@ -466,7 +466,7 @@
                     <textarea name="medical_conditions" rows="3" class="mt-1 block w-full border-[#e8d7c3] rounded-md shadow-sm focus:ring-[#845d45] focus:border-[#845d45] font-quicksand"><?= htmlspecialchars($student_profile['medical_conditions'] ?? '') ?></textarea>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" name="marketing_consent" <?= $student_profile['marketing_consent'] ? 'checked' : '' ?> class="h-4 w-4 text-[#845d45] focus:ring-[#845d45] border-[#e8d7c3] rounded">
+                    <input type="checkbox" name="marketing_consent" <?= ($student_profile['marketing_consent'] ?? false) ? 'checked' : '' ?> class="h-4 w-4 text-[#845d45] focus:ring-[#845d45] border-[#e8d7c3] rounded">
                     <label class="ml-2 block text-sm text-[#845d45] font-quicksand">receive marketing emails</label>
                 </div>
                 <button type="submit" class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium transition">
