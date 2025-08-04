@@ -3,7 +3,7 @@
 <div class="min-h-screen bg-[#f2e9dc] py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
-        <div class="mb-8">
+        <div class="mb-8 mt-10">
             <h1 class="text-3xl font-bold text-[#2b2a24] font-quicksand">instructor dashboard</h1>
             <p class="mt-2 text-[#845d45] font-quicksand">welcome back, <?= strtolower($instructor_profile['first_name']) ?></p>
         </div>
@@ -178,11 +178,6 @@
                     </div>
                 </div>
             </div>
-
-<!-- Hidden data script for slots -->
-<script type="application/json" id="slotsData">
-<?= json_encode($slots_by_date, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>
-</script>
 
             <!-- Quick Actions & Profile -->
             <div class="space-y-6">
@@ -431,27 +426,47 @@ let currentInstructorId = <?= auth()['id'] ?>;
 
 // Initialize calendar
 document.addEventListener('DOMContentLoaded', function() {
-    // Load slots data from hidden script element
-    try {
-        const slotsDataElement = document.getElementById('slotsData');
-        if (slotsDataElement) {
-            slotsData = JSON.parse(slotsDataElement.textContent);
-            console.log('Slots data loaded from script element:', slotsData);
-        } else {
-            console.error('Slots data element not found');
-            slotsData = {};
-        }
-    } catch (error) {
-        console.error('Error parsing slots data:', error);
-        slotsData = {};
-    }
+    console.log('DOM loaded, initializing calendar...');
     
-    // Add a small delay to ensure DOM is fully ready
-    setTimeout(() => {
-        renderCalendar();
+    // Fetch initial data via AJAX (same as month changes)
+    const monthStr = currentDate.getFullYear() + '-' + String(currentDate.getMonth() + 1).padStart(2, '0');
+    fetchCalendarData(monthStr).then(() => {
         setupFormHandlers();
-    }, 100);
+    });
 });
+
+// Function to load initial slots data from the embedded script
+function loadInitialSlotsData() {
+    return new Promise((resolve, reject) => {
+        try {
+            const slotsDataElement = document.getElementById('slotsData');
+            if (slotsDataElement) {
+                const jsonText = slotsDataElement.textContent.trim();
+                console.log('Raw JSON text length:', jsonText.length);
+                console.log('Raw JSON text preview:', jsonText.substring(0, 200));
+                
+                if (jsonText) {
+                    slotsData = JSON.parse(jsonText);
+                    console.log('Slots data loaded from script element:', slotsData);
+                    console.log('Number of dates with slots:', Object.keys(slotsData).length);
+                    resolve(slotsData);
+                } else {
+                    console.warn('Slots data element is empty');
+                    slotsData = {};
+                    resolve(slotsData);
+                }
+            } else {
+                console.error('Slots data element not found');
+                slotsData = {};
+                reject(new Error('Slots data element not found'));
+            }
+        } catch (error) {
+            console.error('Error parsing slots data:', error);
+            slotsData = {};
+            reject(error);
+        }
+    });
+}
 
 function renderCalendar() {
     const year = currentDate.getFullYear();
@@ -461,7 +476,7 @@ function renderCalendar() {
     console.log('Rendering calendar for:', year, month + 1);
     console.log('Current date object:', currentDate);
     console.log('Slots data keys:', Object.keys(slotsData));
-    console.log('Slots data:', slotsData);
+    console.log('Slots data object:', slotsData);
     
     // Update month/year display
     const monthYearElement = document.getElementById('currentMonthYear');
@@ -516,7 +531,7 @@ function createDayElement(day, isOtherMonth, year, month) {
     const isToday = dateStr === new Date().toISOString().split('T')[0];
     const isPast = new Date(dateStr) < new Date().setHours(0, 0, 0, 0);
     
-    console.log('Creating day element for:', dateStr, 'Has slots:', !!slotsData[dateStr]); // Debug log
+    console.log('Creating day element for:', dateStr, 'Has slots:', !!slotsData[dateStr], 'Slots:', slotsData[dateStr]); // Enhanced debug log
     
     const dayDiv = document.createElement('div');
     dayDiv.className = `bg-white min-h-[120px] p-2 ${isOtherMonth ? 'text-gray-400' : 'text-[#2b2a24]'} ${isPast && !isOtherMonth ? 'bg-gray-50' : ''}`;
@@ -528,17 +543,20 @@ function createDayElement(day, isOtherMonth, year, month) {
     dayDiv.appendChild(dayNumber);
     
     // Add slots for this date - ensure we check slotsData properly
-    if (!isOtherMonth && slotsData && slotsData[dateStr] && Array.isArray(slotsData[dateStr])) {
-        console.log('Adding slots for date:', dateStr, 'Slots:', slotsData[dateStr]); // Debug log
+    if (!isOtherMonth && slotsData && typeof slotsData === 'object' && slotsData[dateStr] && Array.isArray(slotsData[dateStr])) {
+        console.log('Adding slots for date:', dateStr, 'Number of slots:', slotsData[dateStr].length); // Enhanced debug log
         const slotsContainer = document.createElement('div');
         slotsContainer.className = 'space-y-1';
         
-        slotsData[dateStr].forEach(slot => {
+        slotsData[dateStr].forEach((slot, index) => {
+            console.log(`Creating slot ${index + 1} for ${dateStr}:`, slot);
             const slotElement = createSlotElement(slot);
             slotsContainer.appendChild(slotElement);
         });
         
         dayDiv.appendChild(slotsContainer);
+    } else if (!isOtherMonth && slotsData[dateStr]) {
+        console.log('Slots data exists for', dateStr, 'but is not an array:', typeof slotsData[dateStr], slotsData[dateStr]);
     }
     
     // Add click handler for empty days (for creating new slots)
@@ -598,20 +616,25 @@ function changeMonth(direction) {
 
 async function fetchCalendarData(monthStr) {
     try {
-        console.log('Fetching calendar data for month:', monthStr); // Debug log
+        console.log('Fetching calendar data for month:', monthStr);
         const response = await fetch(`/instructor/calendar-data?month=${monthStr}`);
         const result = await response.json();
         
-        console.log('Fetched calendar data:', result); // Debug log
+        console.log('Fetched calendar data result:', result);
         
         if (result.success) {
-            slotsData = result.slots_by_date;
-            renderCalendar();
+            slotsData = result.slots_by_date || {};
+            console.log('Updated slotsData:', slotsData);
         } else {
             console.error('Failed to fetch calendar data:', result.message);
+            slotsData = {};
         }
+        
+        renderCalendar();
     } catch (error) {
         console.error('Error fetching calendar data:', error);
+        slotsData = {};
+        renderCalendar();
     }
 }
 
