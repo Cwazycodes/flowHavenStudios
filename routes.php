@@ -20,4 +20,7 @@ $router->get('/book', 'bookings/index.php');
 $router->get('/book/slot', 'bookings/slot.php');
 $router->post('/book/start', 'bookings/start.php');
 $router->get('/book/confirm', 'bookings/confirm.php');
+
+// t&c
+$router->get('/termsandconditions', 'termsandconditions.php');
 ?>
