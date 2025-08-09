@@ -18,7 +18,7 @@
           </svg>
         </a>
       </div>
-      <a href="/termsandconditions" class="text-base font-quicksand transition-colors duration-200 <?= $activePage === 'tandc' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">terms and conditions</a>
+      <a href="/termsandconditions" class="text-base font-quicksand transition-colors duration-200 <?= ($activePage ?? '') === 'tandc' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">terms and conditions</a>
     </div>
     <div class=" border-t border-white/10 pt-6 text-center">
       <p class="font-quicksand text-sm text-[#845d45]">&copy; <?= date('Y') ?> flowhaven studios. all rights reserved.</p>

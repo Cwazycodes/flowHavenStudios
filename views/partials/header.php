@@ -28,33 +28,16 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <a href="/" class="text-base font-quicksand transition-colors duration-200 <?= ($activePage ?? '') === 'home' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">home</a>
-        <a href="/book" class="text-base font-quicksand transition-colors duration-200 <?= ($activePage ?? '') === 'book' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">book</a>
+        <a href="/book" class="text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white">book</a>
         <a href="/instructors" class="text-base font-quicksand transition-colors duration-200 <?= ($activePage ?? '') === 'instructors' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">instructors</a>
         <a href="/faq" class="text-base font-quicksand transition-colors duration-200 <?= ($activePage ?? '') === 'faq' ? 'text-white' : 'text-[#845d45] hover:text-white' ?>">faq</a>
       </div>
       
-      <!-- Authentication Section -->
-      <?php if (!isAuthenticated()): ?>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" onclick="openLoginModal()" class="text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white">
-          log in <span aria-hidden="true">&rarr;</span>
+        <a href="#" onclick="openPasswordModal()" class="text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white">
+          login <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
-      <?php else: ?>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
-        <span class="text-base font-quicksand text-[#845d45]">
-          welcome, <?= strtolower(auth()['first_name']) ?>
-        </span>
-        <a href="/auth/logout" class="text-base font-quicksand text-[#845d45] hover:text-white">log out</a>
-        <?php if (isAdmin()): ?>
-          <a href="/admin/dashboard" class="text-base font-quicksand text-[#845d45] hover:text-white <?= ($activePage ?? '') === 'dashboard' ? 'text-white' : '' ?>">dashboard</a>
-        <?php elseif (isInstructor()): ?>
-          <a href="/instructor/dashboard" class="text-base font-quicksand text-[#845d45] hover:text-white <?= ($activePage ?? '') === 'dashboard' ? 'text-white' : '' ?>">dashboard</a>
-        <?php elseif (isStudent()): ?>
-          <a href="/student/dashboard" class="text-base font-quicksand text-[#845d45] hover:text-white <?= ($activePage ?? '') === 'dashboard' ? 'text-white' : '' ?>">dashboard</a>
-        <?php endif; ?>
-      </div>
-      <?php endif; ?>
     </nav>
 </header>
 
@@ -79,37 +62,23 @@
       <a href="/book" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">book</a>
       <a href="/instructors" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">instructors</a>
       <a href="/faq" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">faq</a>
-      
-      <?php if (!isAuthenticated()): ?>
-        <a href="#" onclick="openLoginModal(); toggleMobileMenu();" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">log in</a>
-      <?php else: ?>
-        <div class="px-4 py-2 text-base font-quicksand text-white">welcome, <?= strtolower(auth()['first_name']) ?></div>
-        <a href="/auth/logout" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">log out</a>
-        <?php if (isAdmin()): ?>
-          <a href="/admin/dashboard" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">admin dashboard</a>
-        <?php elseif (isInstructor()): ?>
-          <a href="/instructor/dashboard" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">instructor dashboard</a>
-        <?php elseif (isStudent()): ?>
-          <a href="/student/dashboard" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">student dashboard</a>
-        <?php endif; ?>
-      <?php endif; ?>
+      <a href="#" onclick="openPasswordModal(); toggleMobileMenu();" class="block rounded-lg px-4 py-2 text-base font-quicksand text-white hover:text-[#845d45]">admin</a>
     </div>
   </div>
 </div>
 
-<!-- Login/Register Modal -->
-<?php if (!isAuthenticated()): ?>
-<div id="authModal" class="fixed inset-0 z-[60] hidden">
+<!-- Password Modal -->
+<div id="passwordModal" class="fixed inset-0 z-[60] hidden">
     <!-- Backdrop -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop" onclick="closeAuthModal()"></div>
+    <div class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop" onclick="closePasswordModal()"></div>
     
     <!-- Modal Content -->
-    <div class="fixed inset-0 flex items-start justify-center p-4 overflow-y-auto">
-        <div class="bg-[#f2e9dc] rounded-lg shadow-xl max-w-md w-full my-8 mx-auto min-h-fit max-h-[calc(100vh-4rem)]">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-[#f2e9dc] rounded-lg shadow-xl max-w-md w-full">
             <!-- Modal Header -->
-            <div class="sticky top-0 bg-[#e8d7c3] flex justify-between items-center p-6 border-b rounded-t-lg z-10">
-                <h2 id="modalTitle" class="text-2xl font-semibold text-[#2b2a24] font-quicksand">sign in</h2>
-                <button onclick="closeAuthModal()" class="text-gray-400 hover:text-gray-600 p-1">
+            <div class="bg-[#e8d7c3] flex justify-between items-center p-6 border-b rounded-t-lg">
+                <h2 class="text-2xl font-semibold text-[#2b2a24] font-quicksand">admin access</h2>
+                <button onclick="closePasswordModal()" class="text-gray-400 hover:text-gray-600 p-1">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -117,147 +86,27 @@
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6 overflow-y-auto max-h-[calc(100vh-12rem)]">
+            <div class="p-6">
                 <!-- Error/Success Messages -->
-                <div id="authMessage" class="hidden mb-4 p-3 rounded-md"></div>
+                <div id="passwordMessage" class="hidden mb-4 p-3 rounded-md"></div>
 
-                <!-- Login Form -->
-                <form id="loginForm" class="space-y-4">
+                <!-- Password Form -->
+                <form id="passwordForm" class="space-y-4">
                     <div>
-                        <label for="loginEmail" class="block text-sm font-medium text-gray-700 font-quicksand">email</label>
-                        <input type="email" id="loginEmail" name="email" required 
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    <div>
-                        <label for="loginPassword" class="block text-sm font-medium text-gray-700 font-quicksand">password</label>
-                        <input type="password" id="loginPassword" name="password" required 
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button type="button" onclick="showForgotPassword()" class="text-sm text-[#845d45] hover:text-[#6e4635] font-quicksand">
-                            forgot password?
-                        </button>
+                        <label for="adminPassword" class="block text-sm font-medium text-gray-700 font-quicksand">enter admin password</label>
+                        <input type="password" id="adminPassword" name="password" required 
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand"
+                               placeholder="Password">
                     </div>
                     <button type="submit" 
                             class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium">
-                        sign in
+                        access dashboard
                     </button>
                 </form>
-
-                <!-- Forgot Password Form -->
-                <form id="forgotPasswordForm" class="space-y-4 hidden">
-                    <div>
-                        <label for="forgotEmail" class="block text-sm font-medium text-gray-700 font-quicksand">email address</label>
-                        <input type="email" id="forgotEmail" name="email" required 
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                        <p class="mt-2 text-sm text-gray-600 font-quicksand">
-                            enter your email address and we'll send you a link to reset your password.
-                        </p>
-                    </div>
-                    <button type="submit" 
-                            class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium">
-                        send reset link
-                    </button>
-                    <button type="button" onclick="showLogin()" class="w-full text-[#845d45] hover:text-[#6e4635] font-quicksand text-sm">
-                        back to sign in
-                    </button>
-                </form>
-
-                <!-- Register Form -->
-                <form id="registerForm" class="space-y-4 hidden">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="registerFirstName" class="block text-sm font-medium text-gray-700 font-quicksand">first name</label>
-                            <input type="text" id="registerFirstName" name="first_name" required 
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                        </div>
-                        <div>
-                            <label for="registerLastName" class="block text-sm font-medium text-gray-700 font-quicksand">last name</label>
-                            <input type="text" id="registerLastName" name="last_name" required 
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="registerEmail" class="block text-sm font-medium text-gray-700 font-quicksand">email</label>
-                        <input type="email" id="registerEmail" name="email" required 
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    <div>
-                        <label for="registerPhone" class="block text-sm font-medium text-gray-700 font-quicksand">phone (optional)</label>
-                        <input type="tel" id="registerPhone" name="phone" 
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    <div>
-                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 font-quicksand">password</label>
-                        <input type="password" id="registerPassword" name="password" required minlength="6"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    <div>
-                        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 font-quicksand">confirm password</label>
-                        <input type="password" id="confirmPassword" name="confirm_password" required minlength="6"
-                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                    </div>
-                    
-                    <!-- Student-specific fields -->
-                    <div id="studentFields" class="space-y-4">
-                        <div>
-                            <label for="preferredLocation" class="block text-sm font-medium text-gray-700 font-quicksand">preferred location</label>
-                            <select id="preferredLocation" name="location_id" required
-                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                                <option value="">select a location...</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="fitnessLevel" class="block text-sm font-medium text-gray-700 font-quicksand">fitness level</label>
-                            <select id="fitnessLevel" name="fitness_level" 
-                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                                <option value="beginner">beginner</option>
-                                <option value="intermediate">intermediate</option>
-                                <option value="advanced">advanced</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="emergencyContact" class="block text-sm font-medium text-gray-700 font-quicksand">emergency contact name</label>
-                            <input type="text" id="emergencyContact" name="emergency_contact_name" 
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                        </div>
-                        <div>
-                            <label for="emergencyPhone" class="block text-sm font-medium text-gray-700 font-quicksand">emergency contact phone</label>
-                            <input type="tel" id="emergencyPhone" name="emergency_contact_phone" 
-                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand">
-                        </div>
-                        <div>
-                            <label for="medicalConditions" class="block text-sm font-medium text-gray-700 font-quicksand">medical conditions/notes (optional)</label>
-                            <textarea id="medicalConditions" name="medical_conditions" rows="3"
-                                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#845d45] focus:border-[#845d45] font-quicksand"></textarea>
-                        </div>
-                        <div class="flex items-center">
-                            <input type="checkbox" id="marketingConsent" name="marketing_consent" 
-                                   class="h-4 w-4 text-[#845d45] focus:ring-[#845d45] border-gray-300 rounded">
-                            <label for="marketingConsent" class="ml-2 block text-sm text-gray-700 font-quicksand">
-                                i would like to receive updates and promotional emails
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" 
-                            class="w-full bg-[#845d45] text-white py-2 px-4 rounded-md hover:bg-[#6e4635] focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 font-quicksand font-medium">
-                        create account
-                    </button>
-                </form>
-
-                <!-- Toggle between forms -->
-                <div class="mt-6 text-center">
-                    <p id="toggleText" class="text-sm text-gray-600 font-quicksand">
-                        don't have an account? 
-                        <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign up</button>
-                    </p>
-                </div>
             </div>
         </div>
     </div>
 </div>
-<?php endif; ?>
 
 <style>
   .font-quicksand {

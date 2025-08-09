@@ -1,5 +1,5 @@
 <script>
-  //  navbar scroll functionality
+  // navbar scroll functionality
   const navbar = document.getElementById('main-navbar');
 
   window.addEventListener('scroll', () => {
@@ -18,11 +18,9 @@
     menu.classList.toggle('hidden');
   }
 
-  // modal functionality
-  let currentModalMode = 'login'; // 'login', 'register', 'forgot'
-
-  function openLoginModal() {
-    const modal = document.getElementById('authModal');
+  // password modal functionality
+  function openPasswordModal() {
+    const modal = document.getElementById('passwordModal');
     const body = document.body;
     
     // store current scroll position
@@ -37,10 +35,15 @@
     body.style.top = `-${scrollY}px`;
     body.style.width = '100%';
     body.style.overflow = 'hidden';
+    
+    // focus on password input
+    setTimeout(() => {
+      document.getElementById('adminPassword').focus();
+    }, 100);
   }
 
-  function closeAuthModal() {
-    const modal = document.getElementById('authModal');
+  function closePasswordModal() {
+    const modal = document.getElementById('passwordModal');
     const body = document.body;
     
     // get the stored scroll position
@@ -61,139 +64,37 @@
     // clean up
     body.removeAttribute('data-scroll-y');
     
-    resetForms();
-    currentModalMode = 'login';
-    showLogin();
+    // reset form and hide messages
+    document.getElementById('passwordForm').reset();
+    hidePasswordMessage();
   }
 
-  function showLogin() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-    const modalTitle = document.getElementById('modalTitle');
-    const toggleText = document.getElementById('toggleText');
-
-    // hide all forms
-    loginForm.classList.remove('hidden');
-    registerForm.classList.add('hidden');
-    forgotPasswordForm.classList.add('hidden');
-
-    modalTitle.textContent = 'sign in';
-    toggleText.innerHTML = 'don\'t have an account? <button onclick="toggleForm()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign up</button>';
-    
-    currentModalMode = 'login';
-    hideMessage();
-  }
-
-  function showRegister() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-    const modalTitle = document.getElementById('modalTitle');
-    const toggleText = document.getElementById('toggleText');
-
-    // hide all forms
-    loginForm.classList.add('hidden');
-    registerForm.classList.remove('hidden');
-    forgotPasswordForm.classList.add('hidden');
-
-    modalTitle.textContent = 'create account';
-    toggleText.innerHTML = 'already have an account? <button onclick="showLogin()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
-    
-    currentModalMode = 'register';
-    hideMessage();
-    
-    // load locations when switching to register form
-    loadLocations();
-  }
-
-  function showForgotPassword() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-    const modalTitle = document.getElementById('modalTitle');
-    const toggleText = document.getElementById('toggleText');
-
-    // hide all forms
-    loginForm.classList.add('hidden');
-    registerForm.classList.add('hidden');
-    forgotPasswordForm.classList.remove('hidden');
-
-    modalTitle.textContent = 'reset password';
-    toggleText.innerHTML = 'remember your password? <button onclick="showLogin()" class="text-[#845d45] hover:text-[#6e4635] font-medium">sign in</button>';
-    
-    currentModalMode = 'forgot';
-    hideMessage();
-  }
-
-  function toggleForm() {
-    if (currentModalMode === 'login') {
-      showRegister();
-    } else {
-      showLogin();
-    }
-  }
-
-  // load locations for the dropdown
-  async function loadLocations() {
-    try {
-      const response = await fetch('/api/locations');
-      const result = await response.json();
-      
-      if (result.success) {
-        const locationSelect = document.getElementById('preferredLocation');
-        
-        // clear existing options except the first one
-        locationSelect.innerHTML = '<option value="">select a location...</option>';
-        
-        // add location options
-        result.locations.forEach(location => {
-          const option = document.createElement('option');
-          option.value = location.id;
-          option.textContent = location.name;
-          locationSelect.appendChild(option);
-        });
-      }
-    } catch (error) {
-      console.error('failed to load locations:', error);
-    }
-  }
-
-  function resetForms() {
-    document.getElementById('loginForm').reset();
-    document.getElementById('registerForm').reset();
-    document.getElementById('forgotPasswordForm').reset();
-    hideMessage();
-  }
-
-  function showMessage(message, isError = false) {
-    const messageDiv = document.getElementById('authMessage');
+  function showPasswordMessage(message, isError = false) {
+    const messageDiv = document.getElementById('passwordMessage');
     messageDiv.textContent = message;
     messageDiv.className = `mb-4 p-3 rounded-md font-quicksand ${isError ? 'bg-red-100 text-red-700 border border-red-300' : 'bg-green-100 text-green-700 border border-green-300'}`;
     messageDiv.classList.remove('hidden');
   }
 
-  function hideMessage() {
-    const authMessage = document.getElementById('authMessage');
-    if (authMessage) {
-      authMessage.classList.add('hidden');
+  function hidePasswordMessage() {
+    const passwordMessage = document.getElementById('passwordMessage');
+    if (passwordMessage) {
+      passwordMessage.classList.add('hidden');
     }
   }
 
-  // handle login, register, and forgot password form submissions
+  // handle password form submission
   document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    const passwordForm = document.getElementById('passwordForm');
 
-    if (loginForm) {
-      loginForm.addEventListener('submit', async function(e) {
+    if (passwordForm) {
+      passwordForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const formData = new FormData(this);
         
         try {
-          const response = await fetch('/auth/login', {
+          const response = await fetch('/admin/login', {
             method: 'POST',
             body: formData
           });
@@ -201,89 +102,18 @@
           const result = await response.json();
           
           if (result.success) {
-            showMessage('login successful! redirecting...', false);
+            showPasswordMessage('access granted! redirecting...', false);
             setTimeout(() => {
-              window.location.href = result.redirect || '/';
+              window.location.href = '/admin/dashboard';
             }, 1500);
           } else {
-            showMessage(result.message || 'login failed. please check your credentials.', true);
+            showPasswordMessage('incorrect password. please try again.', true);
+            // clear the password field
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminPassword').focus();
           }
         } catch (error) {
-          showMessage('an error occurred. please try again.', true);
-        }
-      });
-    }
-
-    // handle register form submission
-    if (registerForm) {
-      registerForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const password = document.getElementById('registerPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        const locationId = document.getElementById('preferredLocation').value;
-        
-        if (password !== confirmPassword) {
-          showMessage('passwords do not match.', true);
-          return;
-        }
-        
-        if (!locationId) {
-          showMessage('please select a location.', true);
-          return;
-        }
-        
-        const formData = new FormData(this);
-        formData.append('role', 'student'); // default role for public registration
-        
-        try {
-          const response = await fetch('/auth/register', {
-            method: 'POST',
-            body: formData
-          });
-          
-          const result = await response.json();
-          
-          if (result.success) {
-            showMessage('account created successfully! you can now sign in.', false);
-            setTimeout(() => {
-              showLogin(); // switch back to login form
-            }, 2000);
-          } else {
-            showMessage(result.message || 'registration failed. please try again.', true);
-          }
-        } catch (error) {
-          showMessage('an error occurred. please try again.', true);
-        }
-      });
-    }
-
-    // handle forgot password form submission
-    if (forgotPasswordForm) {
-      forgotPasswordForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        
-        try {
-          const response = await fetch('/auth/forgot-password', {
-            method: 'POST',
-            body: formData
-          });
-          
-          const result = await response.json();
-          
-          if (result.success) {
-            showMessage('reset instructions sent! check your email for the reset link.', false);
-            // optionally switch back to login after a delay
-            setTimeout(() => {
-              showLogin();
-            }, 3000);
-          } else {
-            showMessage(result.message || 'failed to send reset email. please try again.', true);
-          }
-        } catch (error) {
-          showMessage('an error occurred. please try again.', true);
+          showPasswordMessage('an error occurred. please try again.', true);
         }
       });
     }
@@ -292,7 +122,15 @@
   // close modal on escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      closeAuthModal();
+      closePasswordModal();
+    }
+  });
+
+  // allow enter key to submit password
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && document.getElementById('passwordModal').classList.contains('hidden') === false) {
+      e.preventDefault();
+      document.getElementById('passwordForm').dispatchEvent(new Event('submit'));
     }
   });
 </script>
