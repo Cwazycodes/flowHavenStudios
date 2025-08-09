@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitc379b41b551f67c8d61fbd13f9981678
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
         'P' => 
         array (
             'PHPMailer\\PHPMailer\\' => 20,
@@ -22,6 +26,10 @@ class ComposerStaticInitc379b41b551f67c8d61fbd13f9981678
     );
 
     public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
