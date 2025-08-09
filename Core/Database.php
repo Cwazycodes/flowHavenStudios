@@ -9,7 +9,7 @@ class Database
     public $connection;
     public $statement;
 
-    public function __construct($config, $username = 'root', $password = '')
+    public function __construct($config, $username = 'uwmdx95mga6n40uj', $password = 'H7dB9gHXUd8j91JmF1b4')
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
 
@@ -35,6 +35,11 @@ class Database
     public function find()
     {
         return $this->statement->fetch();
+    }
+
+    public function getLastInsertId()
+    {
+        return $this->connection->lastInsertId();
     }
 
     public function findOrFail()

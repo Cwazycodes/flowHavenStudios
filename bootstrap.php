@@ -3,10 +3,6 @@
 use Core\App;
 use Core\Container;
 use Core\Database;
-use Core\EmailService;
-use Core\User;
-use Core\Location;
-use Core\PasswordReset;
 
 $container = new Container();
 
@@ -16,22 +12,4 @@ $container->bind('Core\Database', function () {
     return new Database($config['database']);
 });
 
-$container->bind('Core\User', function () {
-    return new User();
-});
-
-$container->bind('Core\Location', function () {
-    return new Location();
-});
-
-$container->bind('Core\PasswordReset', function () {
-    return new PasswordReset();
-});
-
-$container->bind('Core\EmailService', function() {
-    return new EmailService();
-});
-
 App::setContainer($container);
-
-
