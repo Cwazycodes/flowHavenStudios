@@ -13,7 +13,6 @@ $password = $_POST['password'] ?? '';
 // Check if password matches
 if ($password === 'BethnalGreen') {
     // Set session to remember admin is logged in
-    session_start();
     $_SESSION['admin_logged_in'] = true;
     $_SESSION['login_time'] = time();
     
