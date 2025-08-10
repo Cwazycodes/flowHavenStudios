@@ -1,4 +1,5 @@
-<?php include '../views/partials/header.php'; ?>
+<?php include 'views/partials/header.php'; ?>
+
 <section class="bg-[#f2e9dc] py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="text-center mb-10">
@@ -50,4 +51,4 @@
   </div>
 </section>
 
-<?php include '../views/partials/footer.php'; ?>
+<?php include 'views/partials/footer.php'; ?>
