@@ -27,7 +27,7 @@
               $end->modify('+50 minutes');
             ?>
             <?= $start->format('H:i') ?> – <?= $end->format('H:i') ?>
-              <span class="ml-2 text-xs text-white">(<?= $slot['capacity'] ?> spots)</span>
+              <!-- <span class="ml-2 text-xs text-white">(<?= $slot['capacity'] ?> spots)</span> -->
             </button>
           </a>
         <?php else: ?>
