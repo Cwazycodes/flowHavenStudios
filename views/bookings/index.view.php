@@ -1,5 +1,4 @@
 <?php include '../views/partials/header.php'; ?>
-
 <section class="bg-[#f2e9dc] py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="text-center mb-10">
@@ -19,8 +18,8 @@
     <div class="space-y-2">
       <?php foreach ($slotGroup as $slot): ?>
         <?php if ((int)$slot['capacity'] > 0): ?>
-          <a href="/book/slot?id=<?= $slot['id'] ?>">
-            <button class="w-full rounded-md bg-[#845d45] text-white font-medium px-4 py-3 text-sm hover:bg-[#6e4635] font-quicksand">
+          <a href="/book/slot?id=<?= $slot['id'] ?>" class="block">
+            <button class="w-full rounded-full border-2 border-[#845d45] px-8 py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition font-medium text-lg">
             <?php
               $start = DateTime::createFromFormat('H:i', $slot['time']);
               $end = clone $start;
@@ -31,7 +30,7 @@
             </button>
           </a>
         <?php else: ?>
-          <button class="w-full rounded-md bg-gray-300 text-gray-500 font-medium px-4 py-3 text-sm cursor-not-allowed" disabled>
+          <button class="w-full rounded-full bg-gray-300 text-gray-500 font-medium px-8 py-4 text-lg cursor-not-allowed" disabled>
           <?php
             $start = DateTime::createFromFormat('H:i', $slot['time']);
             $end = clone $start;

@@ -20,7 +20,7 @@
   <input type="email" name="email" placeholder="email" required class="w-full px-4 py-2 rounded border font-quicksand" />
   <input type="tel" name="phone" placeholder="phone" class="w-full px-4 py-2 rounded border font-quicksand" />
 
-  <button type="submit" class="w-full bg-[#845d45] hover:bg-[#6e4635] text-white py-2 rounded font-quicksand">
+  <button type="submit" class="inline-block rounded-full border-2 border-[#845d45] px-8 py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition font-medium text-lg">
     continue to payment
   </button>
 </form>
