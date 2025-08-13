@@ -11,6 +11,9 @@ const BASE_PATH = __DIR__.'/';
 
 require BASE_PATH.'Core/functions.php';
 
+// Load Composer autoloader first
+require BASE_PATH.'vendor/autoload.php';
+
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     require BASE_PATH."{$class}.php";

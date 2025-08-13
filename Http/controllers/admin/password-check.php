@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $password = $_POST['password'] ?? '';
 
-// Check if password matches
-if ($password === 'BethnalGreen') {
+// Check if password matches using environment variable
+if ($password === $_ENV['ADMIN_PASSWORD']) {
     // Set session to remember admin is logged in
     $_SESSION['admin_logged_in'] = true;
     $_SESSION['login_time'] = time();

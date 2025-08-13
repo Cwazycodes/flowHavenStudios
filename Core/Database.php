@@ -9,8 +9,12 @@ class Database
     public $connection;
     public $statement;
 
-    public function __construct($config, $username = 'uwmdx95mga6n40uj', $password = 'H7dB9gHXUd8j91JmF1b4')
+    public function __construct($config, $username = null, $password = null)
     {
+        // Use environment variables or fallback to passed parameters
+        $username = $username ?: $_ENV['DB_USERNAME'];
+        $password = $password ?: $_ENV['DB_PASSWORD'];
+        
         $dsn = 'mysql:' . http_build_query($config, '', ';');
 
         $this->connection = new PDO($dsn, $username, $password, [

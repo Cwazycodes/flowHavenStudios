@@ -4,6 +4,9 @@ use Core\App;
 use Core\Container;
 use Core\Database;
 
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
+
 $container = new Container();
 
 $container->bind('Core\Database', function () {

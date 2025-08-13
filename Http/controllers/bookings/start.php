@@ -7,7 +7,7 @@ use Core\Database;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
-\Stripe\Stripe::setApiKey('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'); 
+\Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']); 
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();

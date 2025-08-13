@@ -10,7 +10,7 @@ use Stripe\Stripe;
 use Stripe\Checkout\Session;
 $db = App::resolve(Database::class);
 
-\Stripe\Stripe::setApiKey('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'); 
+Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
@@ -77,15 +77,15 @@ $mail = new PHPMailer(true);
 try {
   // SMTP configuration
   $mail->isSMTP();
-  $mail->Host = 'smtp.gmail.com';
+  $mail->Host = $_ENV['SMTP_HOST'];
   $mail->SMTPAuth = true;
-  $mail->Username = 'admin@flowhavenstudios.com';
-  $mail->Password = 'ggyjcchsxmawgjmj';
+  $mail->Username = $_ENV['SMTP_USERNAME'];
+  $mail->Password = $_ENV['SMTP_PASSWORD'];
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = 587;
 
   // Email content
-  $mail->setFrom('admin@flowhavenstudios.com', 'Flow Haven Studios');
+  $mail->setFrom($_ENV['SMTP_USERNAME'], 'Flow Haven Studios');
   $mail->addAddress($data['email'], $data['first_name'] . ' ' . $data['last_name']);
   $mail->isHTML(true);
   $mail->Subject = 'Your Flow Haven Studios Booking Confirmation';

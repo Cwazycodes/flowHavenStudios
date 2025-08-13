@@ -85,15 +85,15 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = $_ENV['SMTP_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Username = 'admin@flowhavenstudios.com';
-        $mail->Password = 'ggyjcchsxmawgjmj';
+        $mail->Username = $_ENV['SMTP_USERNAME'];
+        $mail->Password = $_ENV['SMTP_PASSWORD'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Email content
-        $mail->setFrom('admin@flowhavenstudios.com', 'Flow Haven Studios');
+        $mail->setFrom($_ENV['SMTP_USERNAME'], 'Flow Haven Studios');
         $mail->addAddress($booking['email'], $booking['first_name'] . ' ' . $booking['last_name']);
         $mail->isHTML(true);
         $mail->Subject = 'Important: Your Pilates Session Time Has Changed - Flow Haven Studios';
