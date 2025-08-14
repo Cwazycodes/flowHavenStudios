@@ -5,7 +5,7 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$slots = $db->query("SELECT * FROM time_slots ORDER BY slot_time")->get();
+$slots = $db->query("SELECT * FROM time_slots WHERE slot_time > NOW() ORDER BY slot_time")->get();
 
 $grouped = [];
 
