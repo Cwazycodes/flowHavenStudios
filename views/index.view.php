@@ -71,7 +71,7 @@
   </div>
 </div>
 
-<!-- Experience Section with responsive gallery -->
+<!-- Experience Section with horizontal scrolling gallery -->
 <div class="bg-[#f2e9dc] py-12 sm:py-16 lg:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section header -->
@@ -84,195 +84,118 @@
       </p>
     </div>
     
-    <!-- Responsive Gallery -->
+    <!-- Horizontal Scrolling Gallery for All Screen Sizes -->
     <div class="relative">
-      <!-- Mobile: Horizontal scroll -->
-      <div class="lg:hidden">
-        <div class="flex gap-4 sm:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" 
-             style="scrollbar-width: none; -ms-overflow-style: none;">
-          
-          <!-- Gallery items for mobile -->
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-reformers.jpg" alt="reformer pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">state-of-the-art equipment</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>premium reformers</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              experience pilates on our top-quality reformer machines in an intimate, welcoming environment.
-            </p>
-          </article>
-
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-atmosphere.jpg" alt="flow haven studio atmosphere" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">bethnal green location</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>boutique studio space</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              beautifully designed space in the heart of east london, creating the perfect atmosphere for your practice.
-            </p>
-          </article>
-
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-community.jpg" alt="flow haven community" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">expert instruction</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>personalized attention</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              small class sizes ensure every member receives individual guidance and form corrections.
-            </p>
-          </article>
-
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">wellness refreshments</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>fresh pressed juices</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              nourish your body post-workout with our selection of cold-pressed juices and wellness drinks.
-            </p>
-          </article>
-
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">complete studio setup</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>props & accessories</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              enhance your practice with our curated selection of props, from resistance bands to stability balls.
-            </p>
-          </article>
-
-          <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-80 snap-start">
-            <img src="/assets/images/studio-equipment-3.jpg" alt="more pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" />
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-              <span class="mr-8 font-quicksand">specialized tools</span>
-            </div>
-            <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-              <span>advanced apparatus</span>
-            </h3>
-            <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-              explore movement with our range of specialized pilates apparatus designed for deeper muscle engagement.
-            </p>
-          </article>
-
-        </div>
+      <div class="flex gap-4 sm:gap-6 lg:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" 
+           style="scrollbar-width: none; -ms-overflow-style: none;">
         
-        <!-- Mobile scroll indicators -->
-        <div class="flex justify-center mt-4 space-x-2">
-          <div class="w-2 h-2 bg-[#845d45] rounded-full"></div>
-          <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
-          <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
-        </div>
-      </div>
-
-      <!-- Desktop: Grid layout -->
-      <div class="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
-        
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200">
-          <img src="/assets/images/studio-reformers.jpg" alt="reformer pilates equipment" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <!-- Gallery items -->
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-reformers.jpg" alt="reformer pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">state-of-the-art equipment</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">premium reformers</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">state-of-the-art equipment</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>premium reformers</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             experience pilates on our top-quality reformer machines in an intimate, welcoming environment.
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200">
-          <img src="/assets/images/studio-atmosphere.jpg" alt="flow haven studio atmosphere" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-atmosphere.jpg" alt="flow haven studio atmosphere" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">bethnal green location</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">boutique studio space</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">bethnal green location</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>boutique studio space</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             beautifully designed space in the heart of east london, creating the perfect atmosphere for your practice.
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200">
-          <img src="/assets/images/studio-community.jpg" alt="flow haven community" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-community.jpg" alt="flow haven community" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">expert instruction</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">personalized attention</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">expert instruction</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>personalized attention</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             small class sizes ensure every member receives individual guidance and form corrections.
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200 xl:block hidden">
-          <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">wellness refreshments</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">fresh pressed juices</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">wellness refreshments</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>fresh pressed juices</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             nourish your body post-workout with our selection of cold-pressed juices and wellness drinks.
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200 xl:block hidden">
-          <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">complete studio setup</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">props & accessories</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
-              enhance your practice with our curated selection of props, from resistance bands to stability balls.
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">complete studio setup</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>props & accessories</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
+            enhance your practice with our curated selection of props, from resistance bands to stability balls.
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 pt-80 pb-8 px-8 hover:scale-105 transition-transform duration-200 xl:block hidden">
-          <img src="/assets/images/studio-equipment-3.jpg" alt="more pilates equipment" 
-               class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-equipment-3.jpg" alt="more pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-          <div class="text-sm text-[#f2e9dc] font-quicksand mb-2">specialized tools</div>
-          <h3 class="text-lg font-semibold text-white font-quicksand mb-3">advanced apparatus</h3>
-          <p class="text-sm text-[#f2e9dc]/80 font-quicksand">
-          explore movement with our range of specialized pilates apparatus designed for deeper muscle engagement.
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">specialized tools</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>advanced apparatus</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
+            explore movement with our range of specialized pilates apparatus designed for deeper muscle engagement.
           </p>
         </article>
 
+      </div>
+      
+      <!-- Scroll indicators for all screen sizes -->
+      <div class="flex justify-center mt-6 space-x-2">
+        <div class="w-2 h-2 bg-[#845d45] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
+        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
+        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
+        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
+        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
       </div>
     </div>
   </div>
@@ -467,6 +390,11 @@ picture img {
     transition: none;
   }
 }
+
+/* Gallery scroll indicators update */
+.gallery-scroll-indicators {
+  transition: all 0.3s ease;
+}
 </style>
 
 <!-- Enhanced JavaScript for homepage -->
@@ -493,14 +421,14 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(section);
   });
   
-  // Mobile gallery scroll indicators
-  const gallery = document.querySelector('.lg\\:hidden .flex.gap-4');
-  const indicators = document.querySelectorAll('.flex.justify-center.mt-4 > div');
+  // Gallery scroll indicators for all screen sizes
+  const gallery = document.querySelector('.flex.gap-4.sm\\:gap-6.lg\\:gap-8.overflow-x-auto');
+  const indicators = document.querySelectorAll('.flex.justify-center.mt-6 > div');
   
   if (gallery && indicators.length > 0) {
     gallery.addEventListener('scroll', () => {
       const scrollLeft = gallery.scrollLeft;
-      const itemWidth = gallery.children[0].offsetWidth + 24; // width + gap
+      const itemWidth = gallery.children[0].offsetWidth + 32; // width + gap (lg:gap-8 = 32px)
       const activeIndex = Math.round(scrollLeft / itemWidth);
       
       indicators.forEach((indicator, index) => {
