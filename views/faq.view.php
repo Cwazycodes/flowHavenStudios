@@ -124,27 +124,6 @@
           </div>
         </div>
 
-        <div class="faq-item bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-white/40" data-category="classes">
-          <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/40 rounded-2xl transition-all duration-200" onclick="toggleFAQ(this)">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-[#845d45]/10 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-[#845d45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                </svg>
-              </div>
-              <span class="text-lg font-semibold text-[#2b2a24] font-quicksand">what should i wear to class?</span>
-            </div>
-            <svg class="w-5 h-5 text-[#845d45] transition-transform duration-200 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <div class="pl-14 text-gray-600 font-quicksand leading-relaxed">
-              please wear comfortable, breathable workout clothing that allows for movement. grip socks are essential for hygiene and safety. these are available to purchase at the front desk.
-            </div>
-          </div>
-        </div>
-
         <div class="faq-item bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-white/40" data-category="location">
           <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/40 rounded-2xl transition-all duration-200" onclick="toggleFAQ(this)">
             <div class="flex items-center gap-4">
@@ -252,6 +231,27 @@
         </div>
 
         <!-- Equipment FAQs -->
+        <div class="faq-item bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-white/40" data-category="equipment">
+          <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/40 rounded-2xl transition-all duration-200" onclick="toggleFAQ(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-[#845d45]/10 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-[#845d45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <span class="text-lg font-semibold text-[#2b2a24] font-quicksand">what should i wear to class?</span>
+            </div>
+            <svg class="w-5 h-5 text-[#845d45] transition-transform duration-200 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <div class="pl-14 text-gray-600 font-quicksand leading-relaxed">
+              please wear comfortable, breathable workout clothing that allows for movement. grip socks are essential for hygiene and safety. these are available to purchase at the front desk.
+            </div>
+          </div>
+        </div>
+
         <div class="faq-item bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-white/40" data-category="equipment">
           <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-white/40 rounded-2xl transition-all duration-200" onclick="toggleFAQ(this)">
             <div class="flex items-center gap-4">
