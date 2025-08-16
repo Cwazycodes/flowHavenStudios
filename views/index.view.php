@@ -36,12 +36,8 @@
   <div class="bg-[#f2e9dc] py-16 sm:py-24 brand-story-section -mt-16">
     <div class="mx-auto max-w-4xl px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <p class="text-3xl leading-8 text-gray-600 font-quicksand mb-8">
-          in the rhythm of modern life, where every day brings new demands, your movement practice becomes your constant.
-        </p>
         <p class="text-4xl font-semibold leading-9 text-[#2b2a24] font-quicksand mb-8">
-          flow haven studios exist to be your third space - not home, not work, but the place where you reconnect with yourself. through thoughtful reformer pilates, we help you find your flow and unlock what you're truly capable of.
-        </p>
+        flow haven is your power hour: intimate, soft-luxury reformer pilates, taught with precision and care. welcome to all. come for the burn, stay for the belonging.        </p>
         <div class="mt-10">
           <a href="/book" class="inline-block rounded-full border-2 border-[#845d45] px-8 py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition font-medium text-lg">
             find your flow
