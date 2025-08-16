@@ -5,7 +5,7 @@
     <!-- Header Section -->
     <div class="mx-auto max-w-3xl text-center">
       <h2 class="text-4xl font-semibold tracking-tight text-[#2b2a24] sm:text-5xl font-quicksand">frequently asked questions</h2>
-      <p class="mt-6 text-base/7 text-[#845d45] font-quicksand">have a different question and can't find the answer you're looking for? reach out to our support team by <a href="mailto:bookings@flowhavenstudios.com" class="font-semibold text-[#845d45] hover:text-[#6e4635] underline decoration-2 underline-offset-2 transition-colors duration-200">sending us an email</a> and we'll get back to you as soon as we can.</p>
+      <p class="mt-6 text-base/7 text-[#845d45] font-quicksand">have a different question and can't find the answer you're looking for? reach out to our support team by <a href="mailto:hello@flowhavenstudios.com" class="font-semibold text-[#845d45] hover:text-[#6e4635] underline decoration-2 underline-offset-2 transition-colors duration-200">sending us an email</a> and we'll get back to you as soon as we can.</p>
     </div>
 
     <!-- Search Bar -->
@@ -182,7 +182,7 @@
           </button>
           <div class="faq-answer hidden px-6 pb-6">
             <div class="pl-14 text-gray-600 font-quicksand leading-relaxed">
-              yes, we do! for private 1:1 or small group sessions, please email us at <a href="mailto:bookings@flowhavenstudios.com" class="text-[#845d45] hover:text-[#6e4635] underline decoration-2 underline-offset-2 transition-colors duration-200">bookings@flowhavenstudios.com</a> to enquire or book.
+              yes, we do! for private 1:1 or small group sessions, please email us at <a href="mailto:hello@flowhavenstudios.com" class="text-[#845d45] hover:text-[#6e4635] underline decoration-2 underline-offset-2 transition-colors duration-200">hello@flowhavenstudios.com</a> to enquire or book.
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@
       <div class="bg-white/40 backdrop-blur-sm rounded-3xl p-8 border border-white/60">
         <h3 class="text-2xl font-semibold text-[#2b2a24] font-quicksand mb-4">still have questions?</h3>
         <p class="text-[#845d45] font-quicksand mb-6">our team is here to help you find your flow</p>
-        <a href="mailto:bookings@flowhavenstudios.com" class="inline-flex items-center gap-2 bg-[#845d45] text-white px-6 py-3 rounded-full font-medium font-quicksand hover:bg-[#6e4635] transition-colors duration-200">
+        <a href="mailto:hello@flowhavenstudios.com" class="inline-flex items-center gap-2 bg-[#845d45] text-white px-6 py-3 rounded-full font-medium font-quicksand hover:bg-[#6e4635] transition-colors duration-200">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
