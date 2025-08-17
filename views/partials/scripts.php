@@ -582,6 +582,12 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('editSlotDate').value = datetime.toISOString().split('T')[0];
       document.getElementById('editSlotTime').value = datetime.toTimeString().substr(0,5);
       document.getElementById('editSlotCapacity').value = slot.capacity;
+
+      const womenOnlySelect = document.getElementById('editSlotWomenOnly');
+    if (womenOnlySelect) {
+      const womenOnlyValue = slot.women_only ? '1' : '0';
+      womenOnlySelect.value = womenOnlyValue;
+    }
     }
     openModal('editSlotModal');
   };
