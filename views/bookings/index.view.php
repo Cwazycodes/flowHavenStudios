@@ -99,21 +99,6 @@
       </p>
     </div>
 
-    <!-- Class types legend -->
-    <div class="mt-8 sm:mt-12 bg-white rounded-lg p-4 sm:p-6 shadow-sm">
-      <h4 class="text-lg font-semibold text-[#845d45] font-quicksand mb-3">class types</h4>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="flex items-center gap-2">
-          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800 border border-pink-200">
-            ♀ women only
-          </span>
-          <span class="text-sm text-gray-600 font-quicksand">exclusively for women</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-sm text-gray-600 font-quicksand">no tag = mixed class (all genders welcome)</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
