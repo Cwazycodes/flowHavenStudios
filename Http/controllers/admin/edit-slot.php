@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'] ?? '';
     $time = $_POST['time'] ?? '';
     $capacity = (int)($_POST['capacity'] ?? 6);
+    $womenOnly = (int)($_POST['women_only'] ?? 0);
     
     if (!$slotId || !$date || !$time || $capacity < 1) {
         Session::flash('error', 'Invalid slot data provided.');
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Get current slot data
     $currentSlot = $db->query("
-        SELECT slot_time, capacity FROM time_slots WHERE id = :id
+        SELECT slot_time, capacity, women_only FROM time_slots WHERE id = :id
     ", ['id' => $slotId])->find();
     
     if (!$currentSlot) {
@@ -60,26 +61,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE b.time_slot_id = :slot_id
     ", ['slot_id' => $slotId])->get();
     
+    // Check if class type is changing and send notification if needed
+    $typeChanged = ($currentSlot['women_only'] != $womenOnly);
+    
     // Update the time slot
     $db->query("
         UPDATE time_slots 
-        SET slot_time = :slot_time, capacity = :capacity 
+        SET slot_time = :slot_time, capacity = :capacity, women_only = :women_only 
         WHERE id = :id
     ", [
         'id' => $slotId,
         'slot_time' => $newSlotDateTime,
-        'capacity' => $capacity
+        'capacity' => $capacity,
+        'women_only' => $womenOnly
     ]);
     
     // Send update emails to affected customers
     foreach ($bookings as $booking) {
-        sendSlotUpdateEmail($booking, $newSlotDateTime, $currentSlot['slot_time']);
+        sendSlotUpdateEmail($booking, $newSlotDateTime, $currentSlot['slot_time'], $typeChanged, $womenOnly);
     }
     
-    Session::flash('success', 'Time slot updated successfully. Customers have been notified of the change.');
+    $slotType = $womenOnly ? 'women-only' : 'mixed';
+    Session::flash('success', "Time slot updated successfully ({$slotType} class). Customers have been notified of the change.");
 }
 
-function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
+function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime, $typeChanged, $womenOnly) {
     $mail = new PHPMailer(true);
 
     try {
@@ -96,7 +102,7 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
         $mail->setFrom($_ENV['SMTP_USERNAME'], 'Flow Haven Studios');
         $mail->addAddress($booking['email'], $booking['first_name'] . ' ' . $booking['last_name']);
         $mail->isHTML(true);
-        $mail->Subject = 'Important: Your Pilates Session Time Has Changed - Flow Haven Studios';
+        $mail->Subject = 'Important: Your Pilates Session Details Have Changed - Flow Haven Studios';
         
         // Get the base URL for the logo
         $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
@@ -112,6 +118,8 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
         $newFormattedDate = $newSlotDateTimeObj->format('l, F j, Y');
         $newFormattedTime = $newSlotDateTimeObj->format('g:i A');
         
+        $classType = $womenOnly ? 'women-only' : 'mixed';
+        
         // Create HTML email template
         $emailBody = '
 <!DOCTYPE html>
@@ -119,7 +127,7 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Time Update - Flow Haven Studios</title>
+    <title>Session Update - Flow Haven Studios</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -202,6 +210,19 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
             background-color: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
+        }
+        .class-type-notice {
+            background-color: #f2e9dc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid #845d45;
+        }
+        .class-type-notice h2 {
+            color: #845d45;
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: 600;
         }
         .booking-details {
             background-color: #f2e9dc;
@@ -292,19 +313,22 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
     <div class="container">
         <div class="header">
             <img src="' . $logoUrl . '" alt="Flow Haven Studios Logo">
-            <h1>Session Time Update</h1>
+            <h1>Session Update</h1>
         </div>
         
         <div class="content">
             <div class="greeting">Hi ' . htmlspecialchars($booking['first_name']) . ',</div>
             
-            <p>We need to inform you of an important change to your upcoming Pilates session at Flow Haven Studios. Due to scheduling adjustments, your session time has been updated.</p>
+            <p>We need to inform you of an important change to your upcoming Pilates session at Flow Haven Studios. Due to scheduling adjustments, your session details have been updated.</p>
             
             <div class="update-notice">
-                <h2>⚠️ Session Time Changed</h2>
-                <p>Your session has been moved to a new time. Please see the details below and update your calendar accordingly.</p>
-            </div>
+                <h2>⚠️ Session Details Changed</h2>
+                <p>Your session has been updated. Please see the details below and update your calendar accordingly.</p>
+            </div>';
             
+        // Only show time comparison if time/date actually changed
+        if ($oldSlotDateTime != $newSlotDateTimeObj) {
+            $emailBody .= '
             <div class="time-comparison">
                 <div class="time-box old-time">
                     <h3 style="margin-top: 0; color: #721c24;">Previous Time</h3>
@@ -314,15 +338,30 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
                     <h3 style="margin-top: 0; color: #0c5460;">New Time</h3>
                     <p style="margin: 0; font-weight: 600;">' . $newFormattedDate . '<br>' . $newFormattedTime . '</p>
                 </div>
-            </div>
-            
+            </div>';
+        }
+        
+        // Show class type notice if it changed
+        if ($typeChanged) {
+            $emailBody .= '
+            <div class="class-type-notice">
+                <h2>👥 Class Type Update</h2>
+                <p><strong>This session is now a ' . $classType . ' class.</strong></p>
+                ' . ($womenOnly ? '<p>This session is now exclusively for women.</p>' : '<p>This session is now open to all genders.</p>') . '
+            </div>';
+        }
+        
+        $emailBody .= '
             <div class="booking-details">
                 <h2>📋 Updated Booking Details</h2>
                 <div class="detail-row">
-                    <span class="detail-label">New Date:</span> ' . $newFormattedDate . '
+                    <span class="detail-label">Date:</span> ' . $newFormattedDate . '
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">New Time:</span> ' . $newFormattedTime . '
+                    <span class="detail-label">Time:</span> ' . $newFormattedTime . '
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Class Type:</span> ' . $classType . '
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Booking Reference:</span> ' . htmlspecialchars($booking['ref']) . '
@@ -330,7 +369,7 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
             </div>
             
             <div class="important-note">
-                <strong>Please arrive 10 minutes before your new session time.</strong> Don\'t forget to bring your grip socks!
+                <strong>Please arrive 10 minutes before your updated session time.</strong> Don\'t forget to bring your grip socks!
             </div>
             
             <div class="section">
@@ -352,7 +391,7 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
             
             <div class="contact-info">
                 <h3>❓ Questions About This Change?</h3>
-                <p>If you have any questions about your updated session time or if this change doesn\'t work for you, please don\'t hesitate to reach out:<br>
+                <p>If you have any questions about your updated session or if this change doesn\'t work for you, please don\'t hesitate to reach out:<br>
                 <strong>📧 admin@flowhavenstudios.com</strong></p>
             </div>
             
@@ -362,7 +401,7 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
             </div>
             
             <p style="text-align: center; font-size: 18px; color: #845d45; font-weight: 600; margin: 30px 0;">
-                We apologize for any inconvenience and look forward to seeing you at the new time!
+                We apologize for any inconvenience and look forward to seeing you!
             </p>
             
             <p style="text-align: center;">
@@ -386,10 +425,13 @@ function sendSlotUpdateEmail($booking, $newSlotDateTime, $oldSlotDateTime) {
 
         $mail->Body = $emailBody;
         
-        // Plain text version
-        $mail->AltBody = "Hi " . $booking['first_name'] . ",
+        // Create plain text version
+        $textBody = "Hi " . $booking['first_name'] . ",
 
-Your Pilates session time at Flow Haven Studios has been changed.
+Your Pilates session details at Flow Haven Studios have been updated.";
+
+        if ($oldSlotDateTime != $newSlotDateTimeObj) {
+            $textBody .= "
 
 PREVIOUS TIME:
 Date: " . $oldFormattedDate . "
@@ -397,8 +439,22 @@ Time: " . $oldFormattedTime . "
 
 NEW TIME:
 Date: " . $newFormattedDate . "
-Time: " . $newFormattedTime . "
+Time: " . $newFormattedTime;
+        }
 
+        if ($typeChanged) {
+            $textBody .= "
+
+CLASS TYPE UPDATE:
+This session is now a " . $classType . " class.";
+        }
+
+        $textBody .= "
+
+UPDATED BOOKING DETAILS:
+Date: " . $newFormattedDate . "
+Time: " . $newFormattedTime . "
+Class Type: " . $classType . "
 Booking Reference: " . $booking['ref'] . "
 
 Location (unchanged):
@@ -407,16 +463,18 @@ Workspace, Pillbox Unit G01
 Bethnal Green
 E2 6GH
 
-Please arrive 10 minutes before your new session time and bring grip socks.
+Please arrive 10 minutes before your updated session time and bring grip socks.
 
 Complete your waiver if you haven't already: https://form.jotform.com/252106508214346
 
 Questions? Contact us at admin@flowhavenstudios.com
 
-We apologize for any inconvenience and look forward to seeing you at the new time!
+We apologize for any inconvenience and look forward to seeing you!
 
 Warm wishes,
 The Flow Haven Team";
+
+        $mail->AltBody = $textBody;
 
         // Send email
         $mail->send();

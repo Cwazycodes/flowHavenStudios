@@ -23,27 +23,49 @@
           <div class="space-y-3">
             <?php foreach ($slotGroup as $slot): ?>
               <?php if ((int)$slot['capacity'] > 0): ?>
-                <a href="/book/slot?id=<?= $slot['id'] ?>" class="block">
-                  <button class="w-full rounded-full border-2 border-[#845d45] px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition-all duration-200 font-medium text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 active:scale-95">
-                    <?php
-                      $start = DateTime::createFromFormat('H:i', $slot['time']);
-                      $end = clone $start;
-                      $end->modify('+50 minutes');
-                    ?>
-                    <span class="block sm:inline"><?= $start->format('H:i') ?> – <?= $end->format('H:i') ?></span>
-                    <span class="hidden sm:inline ml-2 text-xs opacity-75">(<?= $slot['capacity'] ?> spots)</span>
-                  </button>
-                </a>
+                <div class="relative">
+                  <a href="/book/slot?id=<?= $slot['id'] ?>" class="block">
+                    <button class="w-full rounded-full border-2 border-[#845d45] px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition-all duration-200 font-medium text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#845d45] focus:ring-offset-2 active:scale-95">
+                      <div class="flex flex-col items-center">
+                        <div class="flex items-center gap-2 mb-1">
+                          <?php
+                            $start = DateTime::createFromFormat('H:i', $slot['time']);
+                            $end = clone $start;
+                            $end->modify('+50 minutes');
+                          ?>
+                          <span class="text-base sm:text-lg font-semibold"><?= $start->format('H:i') ?> – <?= $end->format('H:i') ?></span>
+                          <?php if ($slot['women_only']): ?>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800 border border-pink-200">
+                              ♀ women only
+                            </span>
+                          <?php endif; ?>
+                        </div>
+                        <span class="text-xs opacity-75"><?= $slot['capacity'] ?> spots available</span>
+                      </div>
+                    </button>
+                  </a>
+                </div>
               <?php else: ?>
-                <button class="w-full rounded-full bg-gray-200 text-gray-500 font-medium px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-base sm:text-lg cursor-not-allowed opacity-60" disabled>
-                  <?php
-                    $start = DateTime::createFromFormat('H:i', $slot['time']);
-                    $end = clone $start;
-                    $end->modify('+50 minutes');
-                  ?>
-                  <span class="block sm:inline"><?= $start->format('H:i') ?> – <?= $end->format('H:i') ?></span>
-                  <span class="block sm:inline sm:ml-2 text-xs text-gray-400">(fully booked)</span>
-                </button>
+                <div class="relative">
+                  <button class="w-full rounded-full bg-gray-200 text-gray-500 font-medium px-4 sm:px-6 lg:px-8 py-3 sm:py-4 text-base sm:text-lg cursor-not-allowed opacity-60" disabled>
+                    <div class="flex flex-col items-center">
+                      <div class="flex items-center gap-2 mb-1">
+                        <?php
+                          $start = DateTime::createFromFormat('H:i', $slot['time']);
+                          $end = clone $start;
+                          $end->modify('+50 minutes');
+                        ?>
+                        <span class="text-base sm:text-lg font-semibold"><?= $start->format('H:i') ?> – <?= $end->format('H:i') ?></span>
+                        <?php if ($slot['women_only']): ?>
+                          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-300">
+                            ♀ women only
+                          </span>
+                        <?php endif; ?>
+                      </div>
+                      <span class="text-xs text-gray-400">fully booked</span>
+                    </div>
+                  </button>
+                </div>
               <?php endif; ?>
             <?php endforeach; ?>
           </div>
@@ -76,6 +98,22 @@
         having trouble booking? <a href="mailto:hello@flowhavenstudios.com" class="text-[#845d45] hover:text-[#6e4635] underline">contact us</a> for assistance
       </p>
     </div>
+
+    <!-- Class types legend -->
+    <div class="mt-8 sm:mt-12 bg-white rounded-lg p-4 sm:p-6 shadow-sm">
+      <h4 class="text-lg font-semibold text-[#845d45] font-quicksand mb-3">class types</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800 border border-pink-200">
+            ♀ women only
+          </span>
+          <span class="text-sm text-gray-600 font-quicksand">exclusively for women</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-gray-600 font-quicksand">no tag = mixed class (all genders welcome)</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -97,6 +135,22 @@
     button {
       min-height: 48px;
     }
+  }
+
+  /* Enhanced button styling for women-only classes */
+  .women-only-button {
+    position: relative;
+  }
+  
+  .women-only-button::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ec4899;
+    border-radius: 50%;
   }
 </style>
 

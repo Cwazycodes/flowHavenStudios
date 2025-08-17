@@ -18,6 +18,19 @@
             <p class="text-base sm:text-lg text-[#845d45] font-quicksand">
               <?= date('H:i', strtotime($slot['slot_time'])) ?>
             </p>
+            
+            <!-- Class type indicator -->
+            <div class="mt-2">
+              <?php if ($slot['women_only']): ?>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-800 border border-pink-200">
+                  ♀ women only class
+                </span>
+              <?php else: ?>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                  mixed class (all genders)
+                </span>
+              <?php endif; ?>
+            </div>
           </div>
           <div class="text-center sm:text-right">
             <p class="text-sm text-gray-600 font-quicksand">spots available:</p>
@@ -28,6 +41,25 @@
         </div>
       </div>
     </div>
+    
+    <!-- Class type specific notice -->
+    <?php if ($slot['women_only']): ?>
+      <div class="bg-pink-50 border border-pink-200 rounded-lg p-4 mb-6">
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-pink-800 font-quicksand">women-only class</h3>
+            <p class="mt-1 text-sm text-pink-700 font-quicksand">
+              This session is exclusively for women and provides a supportive environment for all fitness levels.
+            </p>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
     
     <!-- Booking form -->
     <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8">
@@ -100,6 +132,9 @@
             <li>• bring grip socks (available for purchase at studio)</li>
             <li>• cancellations must be made 24 hours in advance</li>
             <li>• complete the waiver form before your first visit</li>
+            <?php if ($slot['women_only']): ?>
+              <li>• this is a women-only class</li>
+            <?php endif; ?>
           </ul>
         </div>
 

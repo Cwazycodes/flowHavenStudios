@@ -23,6 +23,7 @@ foreach ($slots as $slot) {
         'time' => $time,
         'capacity' => $slot['capacity'],
         'datetime' => $slot['slot_time'],
+        'women_only' => $slot['women_only'] ?? 0, // Include women_only field
     ];
 }
 

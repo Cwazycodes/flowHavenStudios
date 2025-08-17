@@ -100,6 +100,7 @@
             <thead class="bg-[#845d45] text-white">
               <tr>
                 <th class="text-left px-4 py-3 font-quicksand">date & time</th>
+                <th class="text-left px-4 py-3 font-quicksand">type</th>
                 <th class="text-left px-4 py-3 font-quicksand">capacity</th>
                 <th class="text-left px-4 py-3 font-quicksand">booked</th>
                 <th class="text-left px-4 py-3 font-quicksand">actions</th>
@@ -109,6 +110,17 @@
               <?php foreach ($timeSlots as $slot): ?>
                 <tr class="border-t hover:bg-gray-50">
                   <td class="px-4 py-3 font-quicksand"><?= date('l, F j, Y - H:i', strtotime($slot['slot_time'])) ?></td>
+                  <td class="px-4 py-3">
+                    <?php if ($slot['women_only']): ?>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                        ♀ women only
+                      </span>
+                    <?php else: ?>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        mixed
+                      </span>
+                    <?php endif; ?>
+                  </td>
                   <td class="px-4 py-3"><?= $slot['capacity'] ?></td>
                   <td class="px-4 py-3">
                     <span class="<?= $slot['booked_count'] >= $slot['capacity'] ? 'text-red-600 font-semibold' : 'text-green-600' ?>">
@@ -116,7 +128,12 @@
                     </span>
                   </td>
                   <td class="px-4 py-3 space-x-2">
-                    <button onclick="openEditSlotModal(<?= htmlspecialchars(json_encode($slot)) ?>)" 
+                    <button onclick="openEditSlotModal(<?= htmlspecialchars(json_encode([
+                      'id' => $slot['id'],
+                      'slot_time' => $slot['slot_time'],
+                      'capacity' => (int)$slot['capacity'],
+                      'women_only' => (int)($slot['women_only'] ?? 0)
+                    ])) ?>)" 
                             class="text-blue-600 hover:underline text-sm font-quicksand">edit</button>
                     <form method="POST" action="/admin/delete-slot" class="inline" onsubmit="return confirm('Delete this slot? This will cancel all bookings!')">
                       <input type="hidden" name="slot_id" value="<?= $slot['id'] ?>">
@@ -141,6 +158,17 @@
                   <p class="text-[#845d45] font-quicksand text-lg font-bold">
                     <?= date('H:i', strtotime($slot['slot_time'])) ?>
                   </p>
+                  <div class="mt-2">
+                    <?php if ($slot['women_only']): ?>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                        ♀ women only
+                      </span>
+                    <?php else: ?>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        mixed
+                      </span>
+                    <?php endif; ?>
+                  </div>
                 </div>
                 <div class="text-right">
                   <p class="text-xs text-gray-600 font-quicksand">capacity</p>
@@ -158,7 +186,12 @@
               </div>
               
               <div class="flex gap-2 pt-3 border-t border-gray-200">
-                <button onclick="openEditSlotModal(<?= htmlspecialchars(json_encode($slot)) ?>)" 
+                <button onclick="openEditSlotModal(<?= htmlspecialchars(json_encode([
+                  'id' => $slot['id'],
+                  'slot_time' => $slot['slot_time'],
+                  'capacity' => (int)$slot['capacity'],
+                  'women_only' => (int)($slot['women_only'] ?? 0)
+                ])) ?>)" 
                         class="flex-1 bg-blue-50 text-blue-600 py-2 px-3 rounded text-sm font-quicksand hover:bg-blue-100 transition-colors">
                   edit
                 </button>
@@ -345,6 +378,14 @@
           <input type="number" name="capacity" value="6" min="1" max="20" required 
                  class="w-full px-3 py-3 sm:py-2 border rounded font-quicksand text-base sm:text-sm focus:ring-2 focus:ring-[#845d45] focus:border-[#845d45]">
         </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-quicksand mb-2">class type</label>
+          <select name="women_only" 
+                  class="w-full px-3 py-3 sm:py-2 border rounded font-quicksand text-base sm:text-sm focus:ring-2 focus:ring-[#845d45] focus:border-[#845d45]">
+            <option value="0">mixed (all genders)</option>
+            <option value="1">women only</option>
+          </select>
+        </div>
         <div class="flex flex-col sm:flex-row gap-3 pt-4">
           <button type="submit" 
                   class="flex-1 bg-[#845d45] hover:bg-[#6e4635] text-white py-3 sm:py-2 rounded font-quicksand transition-colors">
@@ -389,6 +430,14 @@
           <input type="number" name="capacity" id="editSlotCapacity" min="1" max="20" required 
                  class="w-full px-3 py-3 sm:py-2 border rounded font-quicksand text-base sm:text-sm focus:ring-2 focus:ring-[#845d45] focus:border-[#845d45]">
         </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-quicksand mb-2">class type</label>
+          <select name="women_only" id="editSlotWomenOnly"
+                  class="w-full px-3 py-3 sm:py-2 border rounded font-quicksand text-base sm:text-sm focus:ring-2 focus:ring-[#845d45] focus:border-[#845d45]">
+            <option value="0">mixed (all genders)</option>
+            <option value="1">women only</option>
+          </select>
+        </div>
         <div class="flex flex-col sm:flex-row gap-3 pt-4">
           <button type="submit" 
                   class="flex-1 bg-[#845d45] hover:bg-[#6e4635] text-white py-3 sm:py-2 rounded font-quicksand transition-colors">
@@ -419,10 +468,16 @@ function openEditSlotModal(slot) {
   const modal = document.getElementById('editSlotModal');
   const datetime = new Date(slot.slot_time);
   
+  // Set basic slot information
   document.getElementById('editSlotId').value = slot.id;
   document.getElementById('editSlotDate').value = datetime.toISOString().split('T')[0];
   document.getElementById('editSlotTime').value = datetime.toTimeString().substr(0,5);
   document.getElementById('editSlotCapacity').value = slot.capacity;
+  
+  // Set women_only dropdown - ensure it's treated as string for comparison
+  const womenOnlySelect = document.getElementById('editSlotWomenOnly');
+  const womenOnlyValue = slot.women_only ? '1' : '0';
+  womenOnlySelect.value = womenOnlyValue;
   
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';

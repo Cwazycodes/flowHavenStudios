@@ -61,14 +61,15 @@ $bookings = $db->query("
     LIMIT " . $bookingsPerPage . " OFFSET " . $bookingsOffset
 )->get();
 
-// Get paginated future time slots with booking counts (using your existing query structure)
+// Get paginated future time slots with booking counts AND women_only field
 $timeSlots = $db->query("
-    SELECT ts.*, 
+    SELECT ts.id, ts.slot_time, ts.capacity, 
+           COALESCE(ts.women_only, 0) as women_only,
            COALESCE(COUNT(b.id), 0) as booked_count
     FROM time_slots ts
     LEFT JOIN bookings b ON ts.id = b.time_slot_id
     WHERE ts.slot_time > NOW()
-    GROUP BY ts.id
+    GROUP BY ts.id, ts.slot_time, ts.capacity, ts.women_only
     ORDER BY ts.slot_time
     LIMIT " . $slotsPerPage . " OFFSET " . $slotsOffset
 )->get();

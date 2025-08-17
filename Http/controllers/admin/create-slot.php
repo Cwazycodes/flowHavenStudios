@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'] ?? '';
     $time = $_POST['time'] ?? '';
     $capacity = (int)($_POST['capacity'] ?? 6);
+    $womenOnly = (int)($_POST['women_only'] ?? 0);
     
     if (!$date || !$time || $capacity < 1) {
         Session::flash('error', 'Invalid slot data provided.');
@@ -33,16 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect('/admin/dashboard');
     }
     
-    // Insert the new time slot
+    // Insert the new time slot with women_only field
     $db->query("
-        INSERT INTO time_slots (slot_time, capacity) 
-        VALUES (:slot_time, :capacity)
+        INSERT INTO time_slots (slot_time, capacity, women_only) 
+        VALUES (:slot_time, :capacity, :women_only)
     ", [
         'slot_time' => $slotDateTime,
-        'capacity' => $capacity
+        'capacity' => $capacity,
+        'women_only' => $womenOnly
     ]);
     
-    Session::flash('success', 'Time slot created successfully.');
+    $slotType = $womenOnly ? 'women-only' : 'mixed';
+    Session::flash('success', "Time slot created successfully ({$slotType} class).");
 }
 
 redirect('/admin/dashboard');
