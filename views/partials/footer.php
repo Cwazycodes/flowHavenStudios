@@ -1,20 +1,20 @@
 <footer class="bg-[#e8d7c3]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
-    <!-- Main footer content -->
-    <div class="py-8 sm:py-12 lg:py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <!-- Main footer content - All  -->
+    <div class="py-8 sm:py-12 lg:py-16 text-center">
+      <div class="space-y-8 lg:space-y-12">
         
         <!-- Brand section -->
-        <div class="md:col-span-2 lg:col-span-1">
-          <div class="flex flex-col items-center md:items-start space-y-4">
+        <div>
+          <div class="flex flex-col items-center space-y-4">
             <img src="/assets/images/flowHavenTransparent.png" alt="FlowHaven Studios" 
                  class="h-10 sm:h-12 w-auto" />
-            <p class="text-sm sm:text-base text-[#845d45] text-center md:text-left font-quicksand leading-relaxed max-w-xs">
+            <p class="text-sm sm:text-base text-[#845d45] text-center font-quicksand leading-relaxed max-w-xs">
               boutique reformer pilates studio in bethnal green. find your flow.
             </p>
             <!-- Social media links -->
-            <div class="flex space-x-4 sm:space-x-6">
+            <div class="flex space-x-4 sm:space-x-6 justify-center">
               <a href="https://www.instagram.com/flowhavenstudios?igsh=Z3k2djhwazl0NXRl&utm_source=qr" 
                  target="_blank" rel="noopener noreferrer"
                  class="text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 p-2 rounded-full hover:bg-[#845d45]/10"
@@ -36,68 +36,72 @@
           </div>
         </div>
         
-        <!-- Quick Links -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm sm:text-base font-semibold text-[#2b2a24] font-quicksand mb-4">
-            quick links
-          </h3>
-          <ul class="space-y-2 sm:space-y-3">
-            <li>
-              <a href="/" 
-                 class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
-                home
-              </a>
-            </li>
-            <li>
-              <a href="/book" 
-                 class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
-                book a class
-              </a>
-            </li>
-            <li>
-              <a href="/faq" 
-                 class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
-                faq
-              </a>
-            </li>
-            <li>
-              <a href="/termsandconditions" 
-                 class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
-                terms & conditions
-              </a>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Contact Info -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm sm:text-base font-semibold text-[#2b2a24] font-quicksand mb-4">
-            contact
-          </h3>
-          <div class="space-y-2 sm:space-y-3">
-            <p class="text-sm sm:text-base text-[#845d45] font-quicksand">
-              <span class="block font-medium">email:</span>
-              <a href="mailto:hello@flowhavenstudios.com" 
-                 class="hover:text-[#6e4635] transition-colors duration-200">
-                hello@flowhavenstudios.com
-              </a>
-            </p>
-            <div class="text-sm sm:text-base text-[#845d45] font-quicksand">
-              <span class="block font-medium mb-1">location:</span>
-              <address class="not-italic leading-relaxed">
-                unit g01, pillbox<br>
-                115 coventry road<br>
-                bethnal green<br>
-                london e2 6gh
-              </address>
+        <!-- Navigation and Contact in a  grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+          
+          <!-- Quick Links -->
+          <div class="text-center">
+            <h3 class="text-sm sm:text-base font-semibold text-[#2b2a24] font-quicksand mb-4">
+              quick links
+            </h3>
+            <ul class="space-y-2 sm:space-y-3">
+              <li>
+                <a href="/" 
+                   class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
+                  home
+                </a>
+              </li>
+              <li>
+                <a href="/book" 
+                   class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
+                  book a class
+                </a>
+              </li>
+              <li>
+                <a href="/faq" 
+                   class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
+                  faq
+                </a>
+              </li>
+              <li>
+                <a href="/termsandconditions" 
+                   class="text-sm sm:text-base text-[#845d45] hover:text-[#6e4635] transition-colors duration-200 font-quicksand">
+                  terms & conditions
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="text-center">
+            <h3 class="text-sm sm:text-base font-semibold text-[#2b2a24] font-quicksand mb-4">
+              contact
+            </h3>
+            <div class="space-y-2 sm:space-y-3">
+              <p class="text-sm sm:text-base text-[#845d45] font-quicksand">
+                <span class="block font-medium">email:</span>
+                <a href="mailto:hello@flowhavenstudios.com" 
+                   class="hover:text-[#6e4635] transition-colors duration-200">
+                  hello@flowhavenstudios.com
+                </a>
+              </p>
+              <div class="text-sm sm:text-base text-[#845d45] font-quicksand">
+                <span class="block font-medium mb-1">location:</span>
+                <address class="not-italic leading-relaxed">
+                  unit g01, pillbox<br>
+                  115 coventry road<br>
+                  bethnal green<br>
+                  london e2 6gh
+                </address>
+              </div>
             </div>
           </div>
+        
         </div>
-      
       </div>
     </div>
     
-    <!-- Newsletter signup (optional) -->
+    <!-- Newsletter signup -  -->
     <div class="border-t border-[#845d45]/20 py-6 sm:py-8">
       <div class="text-center">
         <h3 class="text-sm sm:text-base font-semibold text-[#2b2a24] font-quicksand mb-3 sm:mb-4">
@@ -121,13 +125,14 @@
       </div>
     </div>
     
-    <!-- Bottom bar -->
+    <!-- Bottom bar -  -->
     <div class="border-t border-[#845d45]/20 py-4 sm:py-6">
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 text-center sm:text-left">
+      <div class="text-center">
         <p class="text-xs sm:text-sm text-[#845d45] font-quicksand">
           &copy; <?= date('Y') ?> flow haven studios. all rights reserved.
         </p>
-      
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -226,15 +231,9 @@ footer a[aria-label*="Follow"]:hover {
   pointer-events: none;
 }
 
-/* Responsive grid improvements */
-@media (min-width: 768px) and (max-width: 1023px) {
-  footer .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  footer .grid > div:first-child {
-    grid-column: span 2;
-  }
+/*  footer improvements */
+footer .grid {
+  justify-items: center;
 }
 
 /* Print styles */
@@ -244,7 +243,7 @@ footer a[aria-label*="Follow"]:hover {
   }
 }
 </style>
+
     <?php include 'scripts.php'; ?>
 </body>
 </html>
-

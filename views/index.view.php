@@ -194,8 +194,6 @@
         <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
         <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
         <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
-        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
-        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
       </div>
     </div>
   </div>
