@@ -1,4 +1,4 @@
-<?php include base_path('views/partials/header.php'); ?>
+<?php include 'partials/header.php'; ?>
 
 <div class="bg-[#f2e9dc]">
   <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
