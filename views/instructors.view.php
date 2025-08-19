@@ -16,145 +16,9 @@
     <!-- Instructors Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
       
-      <!-- Sophie Piggott -->
-      <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/sophie-piggott.jpg" 
-                 alt="Sophie Piggott - Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6 lg:p-8">
-            <div class="mb-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-                sophie piggott
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  mat & reformer
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  precision training
-                </span>
-              </div>
-            </div>
-            
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-              sophie brings fresh energy and precision to every class. after completing her comprehensive pilates training earlier this year, she honed her skills at trunk pilates mascot in sydney. now based in london, sophie teaches across the city's premier studios including range reformer, plum pilates, and studio m. her attention to detail and encouraging approach helps students master proper form while building strength and confidence.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pamela Stathoulopoulou -->
-      <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/pamela-stathoulopoulou.jpg" 
-                 alt="Pamela Stathoulopoulou - Senior Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6 lg:p-8">
-            <div class="mb-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-                pamela stathoulopoulou
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  12+ years experience
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  full apparatus
-                </span>
-              </div>
-            </div>
-            
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-              with over 12 years of dedicated practice, pamela is our most experienced instructor, bringing deep knowledge of classical and contemporary pilates. her expertise spans the complete apparatus including reformer, cadillac, and barrel work. pamela has guided countless students through transformative journeys across london's top studios, private sessions, and online platforms. her classes blend technical precision with intuitive movement, creating space for both challenge and healing.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Leagha McMahon -->
-      <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/leagha-mcmahon.jpg" 
-                 alt="Leagha McMahon - Fitness & Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6 lg:p-8">
-            <div class="mb-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-                leagha mcmahon
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  muay thai background
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  strength conditioning
-                </span>
-              </div>
-            </div>
-            
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-              leagha's unique journey from muay thai fighter in malaysia to london's fitness scene brings an exciting edge to her pilates practice. with experience at prestigious venues like bxr, soho house, and psycle, she seamlessly blends martial arts discipline with pilates precision. her 7-year relationship with her longest-standing private client speaks to her dedication and expertise. leagha's classes emphasize functional strength, mental resilience, and the warrior spirit within us all.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Deena Rahman -->
-      <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/deena-rahman.jpg" 
-                 alt="Deena Rahman - Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6 lg:p-8">
-            <div class="mb-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-                deena rahman
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  dance background
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  strength reformer
-                </span>
-              </div>
-            </div>
-            
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-              deena's transition from dance instruction to strength-based reformer pilates brings a beautiful fusion of grace and power to her teaching. her five years in dance education instilled a deep understanding of body mechanics, rhythm, and the joy of movement. now specializing in strength reformer work, deena creates dynamic classes that challenge your limits while maintaining the fluidity and artistry that dance taught her. her classes are both empowering and elegant.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <!-- Amelia Harris -->
       <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
           <!-- Image Container -->
           <div class="aspect-[4/5] overflow-hidden">
             <img src="assets/instructor-images/amelia-harris.jpg" 
@@ -164,7 +28,7 @@
           </div>
           
           <!-- Content -->
-          <div class="p-6 lg:p-8">
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
             <div class="mb-4">
               <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
                 amelia harris
@@ -179,8 +43,176 @@
               </div>
             </div>
             
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
               amelia combines four years of fitness instruction expertise with her growing passion for reformer pilates. her broad foundation in general fitness gives her a unique perspective on functional movement and injury prevention. as a newer voice in the pilates world, amelia brings fresh enthusiasm and relatability to students beginning their own pilates journey. her classes focus on building confidence, proper alignment, and discovering the transformative power of mindful movement.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deena Rahman -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/deena-rahman.jpg" 
+                 alt="Deena Rahman - Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                deena rahman
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  dance background
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  strength reformer
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              deena's transition from dance instruction to strength-based reformer pilates brings a beautiful fusion of grace and power to her teaching. her five years in dance education instilled a deep understanding of body mechanics, rhythm, and the joy of movement. now specializing in strength reformer work, deena creates dynamic classes that challenge your limits while maintaining the fluidity and artistry that dance taught her. her classes are both empowering and elegant.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leagha McMahon -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/leagha-mcmahon.jpg" 
+                 alt="Leagha McMahon - Fitness & Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                leagha mcmahon
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  muay thai background
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  strength conditioning
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              leagha's unique journey from muay thai fighter in malaysia to london's fitness scene brings an exciting edge to her pilates practice. with experience at prestigious venues like bxr, soho house, and psycle, she seamlessly blends martial arts discipline with pilates precision. her 7-year relationship with her longest-standing private client speaks to her dedication and expertise. leagha's classes emphasize functional strength, mental resilience, and the warrior spirit within us all.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pamela Stathoulopoulou -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/pamela-stathoulopoulou.jpg" 
+                 alt="Pamela Stathoulopoulou - Senior Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                pamela stathoulopoulou
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  12+ years experience
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  full apparatus
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              with over 12 years of dedicated practice, pamela is our most experienced instructor, bringing deep knowledge of classical and contemporary pilates. her expertise spans the complete apparatus including reformer, cadillac, and barrel work. pamela has guided countless students through transformative journeys across london's top studios, private sessions, and online platforms. her classes blend technical precision with intuitive movement, creating space for both challenge and healing.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophie Baker -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/sophie-baker.jpg" 
+                 alt="Sophie Baker - Mat & Reformer Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+              sophie baker
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                reformer specialist
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  16+ months experience
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+            with over 16 months of intensive reformer pilates instruction across london's boutique fitness scene, sophie brings proven expertise and dynamic energy to every session. her extensive experience teaching at premium studios throughout the city has refined her ability to deliver technically precise, high-energy classes that challenge students while maintaining perfect form. known for her adaptability and reliability, sophie excels at reading the room and adjusting her teaching style to meet each class exactly where they are. her passion for reformer work shines through in every session, creating an atmosphere where students feel both pushed and supported on their fitness journey. </p>         </div>
+        </div>
+      </div>
+
+      <!-- Sophie Piggott -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/sophie-piggott.jpg" 
+                 alt="Sophie Piggott - Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                sophie piggott
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  mat & reformer
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  precision training
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              sophie brings fresh energy and precision to every class. after completing her comprehensive pilates training earlier this year, she honed her skills at trunk pilates mascot in sydney. now based in london, sophie teaches across the city's premier studios including range reformer, plum pilates, and studio m. her attention to detail and encouraging approach helps students master proper form while building strength and confidence.
             </p>
           </div>
         </div>
@@ -188,7 +220,7 @@
 
       <!-- Sydra Robert Ana -->
       <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
           <!-- Image Container -->
           <div class="aspect-[4/5] overflow-hidden">
             <img src="assets/instructor-images/sydra-robert-ana.jpg" 
@@ -198,7 +230,7 @@
           </div>
           
           <!-- Content -->
-          <div class="p-6 lg:p-8">
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
             <div class="mb-4">
               <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
                 sydra robert ana
@@ -213,97 +245,63 @@
               </div>
             </div>
             
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
               sydra specializes in both mat and reformer pilates, offering a well-rounded approach that bridges traditional floor work with apparatus training. her dual expertise allows students to experience the full spectrum of pilates methodology, from the foundational principles learned on the mat to the enhanced resistance and support of the reformer. sydra's teaching emphasizes the connection between breath and movement, creating classes that are both grounding and energizing.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Sophie Baker -->
+      <!-- Contact Card -->
       <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/sophie-baker.jpg" 
-                 alt="Sophie Baker - Mat & Reformer Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Contact Visual Container -->
+          <div class="aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#845d45] to-[#6d4935] relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-white">
+                <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <p class="text-lg font-semibold font-quicksand opacity-90">get in touch</p>
+              </div>
+            </div>
+            <!-- Subtle pattern overlay -->
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="white"/></svg>'); background-repeat: repeat;"></div>
           </div>
           
           <!-- Content -->
-          <div class="p-6 lg:p-8">
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
             <div class="mb-4">
               <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-              Sophie Baker
+                questions about classes?
               </h3>
               <div class="flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                reformer specialist
+                  expert guidance
                 </span>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  16+ months experience
+                  personalized recommendations
                 </span>
               </div>
             </div>
             
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-            with over 16 months of intensive reformer pilates instruction across london's boutique fitness scene, sophie brings proven expertise and dynamic energy to every session. her extensive experience teaching at premium studios throughout the city has refined her ability to deliver technically precise, high-energy classes that challenge students while maintaining perfect form. known for her adaptability and reliability, sophie excels at reading the room and adjusting her teaching style to meet each class exactly where they are. her passion for reformer work shines through in every session, creating an atmosphere where students feel both pushed and supported on their fitness journey. </p>         </div>
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed mb-6 flex-1">
+              our team is here to help you find the perfect class and instructor for your pilates journey. whether you're a complete beginner or looking to deepen your practice, we'll guide you to the right fit for your goals and schedule.
+            </p>
+            
+            <!-- Contact Button -->
+            <a href="mailto:hello@flowhavenstudios.com" 
+               class="inline-flex items-center justify-center w-full bg-[#845d45] text-white py-3 px-6 rounded-xl hover:bg-[#6d4935] transition-all duration-300 font-quicksand font-medium group-hover:scale-105 active:scale-95">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              email us
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Add this as the 8th card after Sophie Baker's card -->
-<div class="group">
-  <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-    <!-- Contact Visual Container -->
-    <div class="aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#845d45] to-[#6d4935] relative">
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white">
-          <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          <p class="text-lg font-semibold font-quicksand opacity-90">get in touch</p>
-        </div>
-      </div>
-      <!-- Subtle pattern overlay -->
-      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="white"/></svg>'); background-repeat: repeat;"></div>
     </div>
-    
-    <!-- Content -->
-    <div class="p-6 lg:p-8">
-      <div class="mb-4">
-        <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-          questions about classes?
-        </h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-            expert guidance
-          </span>
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-            personalized recommendations
-          </span>
-        </div>
-      </div>
-      
-      <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed mb-6">
-        our team is here to help you find the perfect class and instructor for your pilates journey. whether you're a complete beginner or looking to deepen your practice, we'll guide you to the right fit for your goals and schedule.
-      </p>
-      
-      <!-- Contact Button -->
-      <a href="mailto:hello@flowhavenstudios.com" 
-         class="inline-flex items-center justify-center w-full bg-[#845d45] text-white py-3 px-6 rounded-xl hover:bg-[#6d4935] transition-all duration-300 font-quicksand font-medium group-hover:scale-105 active:scale-95">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-        </svg>
-        email us
-      </a>
-    </div>
-  </div>
-</div>
-
-    </div>
-
-   
 
     <!-- Philosophy Section -->
     <div class="mt-20 sm:mt-24 lg:mt-32">
@@ -469,7 +467,6 @@
 .w-16.h-16:hover svg {
   transform: scale(1.1);
 }
-
 
 </style>
 
