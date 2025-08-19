@@ -220,6 +220,87 @@
         </div>
       </div>
 
+      <!-- Sophie Baker -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/sophie-baker.jpg" 
+                 alt="Sophie Baker - Mat & Reformer Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+              Sophie Baker
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                reformer specialist
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  16+ months experience
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
+            with over 16 months of intensive reformer pilates instruction across london's boutique fitness scene, sophie brings proven expertise and dynamic energy to every session. her extensive experience teaching at premium studios throughout the city has refined her ability to deliver technically precise, high-energy classes that challenge students while maintaining perfect form. known for her adaptability and reliability, sophie excels at reading the room and adjusting her teaching style to meet each class exactly where they are. her passion for reformer work shines through in every session, creating an atmosphere where students feel both pushed and supported on their fitness journey. </p>         </div>
+        </div>
+      </div>
+
+      <!-- Add this as the 8th card after Sophie Baker's card -->
+<div class="group">
+  <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <!-- Contact Visual Container -->
+    <div class="aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#845d45] to-[#6d4935] relative">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white">
+          <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <p class="text-lg font-semibold font-quicksand opacity-90">get in touch</p>
+        </div>
+      </div>
+      <!-- Subtle pattern overlay -->
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="white"/></svg>'); background-repeat: repeat;"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="p-6 lg:p-8">
+      <div class="mb-4">
+        <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+          questions about classes?
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+            expert guidance
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+            personalized recommendations
+          </span>
+        </div>
+      </div>
+      
+      <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed mb-6">
+        our team is here to help you find the perfect class and instructor for your pilates journey. whether you're a complete beginner or looking to deepen your practice, we'll guide you to the right fit for your goals and schedule.
+      </p>
+      
+      <!-- Contact Button -->
+      <a href="mailto:hello@flowhavenstudios.com" 
+         class="inline-flex items-center justify-center w-full bg-[#845d45] text-white py-3 px-6 rounded-xl hover:bg-[#6d4935] transition-all duration-300 font-quicksand font-medium group-hover:scale-105 active:scale-95">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+        email us
+      </a>
+    </div>
+  </div>
+</div>
+
     </div>
 
    
@@ -388,6 +469,8 @@
 .w-16.h-16:hover svg {
   transform: scale(1.1);
 }
+
+
 </style>
 
 <?php include 'partials/footer.php'; ?>
