@@ -1,12 +1,15 @@
 <?php include 'partials/header.php'; ?>
 
 <div class="relative isolate overflow-hidden min-h-screen">
-  <!-- Background image - Now fills entire viewport -->
+  <!-- Background image - Different image for mobile -->
   <picture>
-    <source media="(max-width: 767px)" srcset="/assets/images/MainBackground.jpg">
-    <source media="(max-width: 1023px)" srcset="/assets/images/MainBackground.jpg">
+    <!-- Mobile: Use a different image optimized for mobile -->
+    <source media="(max-width: 767px)" srcset="/assets/images/MobileBackground.jpg" type="image/jpeg">
+    <!-- Tablet: Original image -->
+    <source media="(max-width: 1023px)" srcset="/assets/images/MainBackground.jpg" type="image/jpeg">
+    <!-- Desktop: Original image -->
     <img src="/assets/images/MainBackground.jpg" alt="Flow Haven Studios Interior" 
-         class="absolute inset-0 -z-10 w-full h-full object-cover object-center" 
+         class="absolute inset-0 -z-10 w-full h-full object-cover object-center hero-bg-image" 
          loading="eager" />
   </picture>
 
@@ -315,11 +318,44 @@
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
 }
 
+/* Clean image rendering without aggressive filters */
+.hero-bg-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  -ms-interpolation-mode: bicubic;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 /* Responsive image optimization for full screen */
-.hero-fullscreen picture img {
+.hero-fullscreen picture img,
+.hero-fullscreen .hero-bg-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+/* Subtle mobile optimizations only */
+@media (max-width: 767px) {
+  .hero-bg-image {
+    /* Very light enhancement - no aggressive filtering */
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+    
+    /* Force hardware acceleration without scaling tricks */
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Only slight enhancement for very high DPI displays */
+  @media (-webkit-min-device-pixel-ratio: 3) {
+    .hero-bg-image {
+      image-rendering: -webkit-optimize-contrast;
+    }
+  }
 }
 
 /* Account for header height on mobile when header is fixed */
@@ -412,11 +448,20 @@ document.addEventListener('DOMContentLoaded', function() {
   updateViewportHeight();
   window.addEventListener('resize', updateViewportHeight);
   
-  // Optimize image loading for hero
-  const heroImage = heroSection?.querySelector('img');
+  // Clean image optimization - no aggressive processing
+  const heroImage = heroSection?.querySelector('.hero-bg-image');
   if (heroImage) {
     heroImage.style.objectFit = 'cover';
     heroImage.style.objectPosition = 'center';
+    
+    // Simple GPU acceleration for smoother rendering
+    heroImage.style.transform = 'translateZ(0)';
+    heroImage.style.backfaceVisibility = 'hidden';
+    
+    // Only apply basic optimizations
+    if (window.innerWidth <= 767) {
+      heroImage.style.imageRendering = '-webkit-optimize-contrast';
+    }
   }
   
   // Gallery scroll indicators functionality
