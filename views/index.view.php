@@ -19,7 +19,6 @@
         <!-- Responsive heading -->
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance text-white font-quicksand leading-tight">
           <span class="block sm:inline">find your flow</span>
-          <span class="block sm:inline"> at flow haven</span>
         </h1>
         
         <!-- Responsive subtitle -->
@@ -64,7 +63,7 @@
       <div class="mt-8 sm:mt-10">
         <a href="/book" 
            class="inline-block rounded-full border-2 border-[#845d45] px-6 sm:px-8 py-3 sm:py-4 text-[#845d45] font-quicksand hover:bg-[#845d45] hover:text-white transition-all duration-300 font-medium text-base sm:text-lg shadow-md hover:shadow-lg active:scale-95">
-          find your flow
+          claim your reformer
         </a>
       </div>
     </div>
@@ -138,7 +137,7 @@
           </p>
         </article>
 
-        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+        <!-- <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
           <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
           <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
@@ -152,7 +151,7 @@
           <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             nourish your body post-workout with our selection of cold-pressed juices and wellness drinks.
           </p>
-        </article>
+        </article> -->
 
         <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
           <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
@@ -191,7 +190,6 @@
       <!-- Scroll indicators for all screen sizes -->
       <div class="flex justify-center mt-6 space-x-2">
         <div class="w-2 h-2 bg-[#845d45] rounded-full"></div>
-        <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
         <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
         <div class="w-2 h-2 bg-[#845d45]/30 rounded-full"></div>
       </div>
@@ -243,10 +241,10 @@
           </div>
         </div>
         <h3 class="text-base sm:text-lg font-semibold font-quicksand text-[#845d45] mb-3">
-          bethnal green location
+          bethnal green
         </h3>
         <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-          conveniently based in east london, close to the station and surrounded by local charm.
+        conveniently based in east London close to both the underground and overground station.
         </p>
       </div>
 
