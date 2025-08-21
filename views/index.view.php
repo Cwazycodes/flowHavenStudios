@@ -143,6 +143,22 @@
         </article>
 
         <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">wellness refreshments</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>fresh pressed juices</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
+            nourish your body post-workout with our selection of cold-pressed juices and wellness drinks.
+          </p>
+        </article>
+
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
           <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
           <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
