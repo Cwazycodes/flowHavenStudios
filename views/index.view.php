@@ -1,44 +1,46 @@
 <?php include 'partials/header.php'; ?>
 
-<div class="relative isolate overflow-hidden">
-  <!-- Background image -->
+<div class="relative isolate overflow-hidden min-h-screen">
+  <!-- Background image - Now fills entire viewport -->
   <picture>
     <source media="(max-width: 767px)" srcset="/assets/images/MainBackground.jpg">
     <source media="(max-width: 1023px)" srcset="/assets/images/MainBackground.jpg">
     <img src="/assets/images/MainBackground.jpg" alt="Flow Haven Studios Interior" 
-         class="absolute inset-0 -z-10 size-full object-cover object-center" 
+         class="absolute inset-0 -z-10 w-full h-full object-cover object-center" 
          loading="eager" />
   </picture>
 
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-black/20 to-black/40"></div>
   
-  <!-- Responsive hero content -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl py-20 sm:py-32 lg:py-48 xl:py-56">
-      <div class="text-center">
-        <!-- Responsive heading -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance text-white font-quicksand leading-tight">
-          <span class="block sm:inline">find your flow</span>
-        </h1>
-        
-        <!-- Responsive subtitle -->
-        <p class="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl font-medium text-pretty text-white/90 font-quicksand max-w-2xl mx-auto">
-          boutique reformer pilates studio in the heart of bethnal green
-        </p>
-        
-        <!-- CTA button -->
-        <div class="mt-8 sm:mt-10">
-          <a href="/book" 
-             class="inline-block rounded-full border-2 border-white px-6 sm:px-8 py-3 sm:py-4 text-white font-quicksand hover:bg-white hover:text-[#845d45] transition-all duration-300 font-medium text-base sm:text-lg shadow-lg hover:shadow-xl active:scale-95">
-            book your session
-          </a>
+  <!-- Responsive hero content - Centered in full viewport -->
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl py-8 sm:py-12">
+        <div class="text-center">
+          <!-- Responsive heading -->
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance text-white font-quicksand leading-tight">
+            <span class="block sm:inline">find your flow</span>
+          </h1>
+          
+          <!-- Responsive subtitle -->
+          <p class="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl font-medium text-pretty text-white/90 font-quicksand max-w-2xl mx-auto">
+            boutique reformer pilates studio in the heart of bethnal green
+          </p>
+          
+          <!-- CTA button -->
+          <div class="mt-8 sm:mt-10">
+            <a href="/book" 
+               class="inline-block rounded-full border-2 border-white px-6 sm:px-8 py-3 sm:py-4 text-white font-quicksand hover:bg-white hover:text-[#845d45] transition-all duration-300 font-medium text-base sm:text-lg shadow-lg hover:shadow-xl active:scale-95">
+              book your session
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
   
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-10">
+  <!-- Scroll indicator - Positioned absolutely at bottom -->
+  <div class="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-20">
     <button onclick="document.querySelector('.brand-story-section').scrollIntoView({behavior: 'smooth'})" 
             class="animate-bounce focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 rounded-full p-2"
             aria-label="Scroll to content">
@@ -49,12 +51,12 @@
     </button>
   </div>
   
-  <!-- fade gradient -->
-  <div class="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-[#f2e9dc] via-[#f2e9dc]/50 to-transparent z-0"></div>
+  <!-- Fade gradient at bottom for smooth transition -->
+  <div class="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-[#f2e9dc] via-[#f2e9dc]/50 to-transparent z-10"></div>
 </div>
 
 <!-- Brand Story Section -->
-<div class="bg-[#f2e9dc] py-12 sm:py-16 lg:py-24 brand-story-section -mt-8 sm:-mt-12 lg:-mt-16" id="main-content">
+<div class="bg-[#f2e9dc] py-12 sm:py-16 lg:py-24 brand-story-section" id="main-content">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl text-center">
       <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-relaxed text-[#2b2a24] font-quicksand mb-8 sm:mb-10">
@@ -136,22 +138,6 @@
             small class sizes ensure every member receives individual guidance and form corrections.
           </p>
         </article>
-
-        <!-- <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
-          <img src="/assets/images/studio-juices.jpg" alt="fresh wellness juices" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
-          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
-            <span class="mr-8 font-quicksand">wellness refreshments</span>
-          </div>
-          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
-            <span>fresh pressed juices</span>
-          </h3>
-          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
-            nourish your body post-workout with our selection of cold-pressed juices and wellness drinks.
-          </p>
-        </article> -->
 
         <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
           <img src="/assets/images/studio-equipment-2.jpg" alt="additional pilates equipment" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
@@ -321,81 +307,208 @@
   </div>
 </div>
 
-<!-- Performance optimization styles -->
+<!-- Additional CSS for full-screen hero -->
 <style>
-/* Hide scrollbar for webkit browsers */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Ensure the hero section takes full viewport height */
+.hero-fullscreen {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
 }
 
-/* Hide scrollbar for firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-
-/* Smooth scrolling */
-.scrollbar-hide {
-  scroll-behavior: smooth;
-}
-
-/* Responsive image optimization */
-picture img {
+/* Responsive image optimization for full screen */
+.hero-fullscreen picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Touch feedback for mobile */
-@media (max-width: 767px) {
-  .active\:scale-95:active {
-    transform: scale(0.95);
+/* Account for header height on mobile when header is fixed */
+@media (max-width: 1023px) {
+  .hero-fullscreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* Ensure content is centered both horizontally and vertically */
+.hero-content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Performance optimization for hero images */
+.hero-fullscreen img {
+  will-change: transform;
+}
+
+/* Smooth scrolling for scroll indicator */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive text optimization for full screen hero */
+@media (max-width: 640px) {
+  .hero-fullscreen h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
   
-  /* Improve tap targets */
-  button, a {
-    min-height: 44px;
+  .hero-fullscreen p {
+    font-size: clamp(1rem, 4vw, 1.125rem);
   }
 }
 
-/* Intersection Observer animation setup */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.animate-on-scroll.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hover effects for desktop */
-@media (min-width: 1024px) {
-  .hover\:scale-105:hover {
-    transform: scale(1.05);
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-fullscreen h1 {
+    font-size: clamp(3rem, 6vw, 4rem);
   }
 }
 
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .animate-bounce {
-    animation: none;
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-fullscreen {
+    height: 100vh;
   }
   
-  .transition-transform {
-    transition: none;
+  .hero-fullscreen .text-center {
+    padding: 2rem 0;
   }
-}
-
-/* Gallery scroll indicators update */
-.gallery-scroll-indicators {
-  transition: all 0.3s ease;
+  
+  .hero-fullscreen h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-fullscreen p {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    margin: 1rem auto;
+  }
 }
 </style>
 
-<!-- Enhanced JavaScript for homepage -->
+<!-- Enhanced JavaScript for full-screen hero and gallery -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Apply full-screen class to hero section
+  const heroSection = document.querySelector('.relative.isolate.overflow-hidden.min-h-screen');
+  if (heroSection) {
+    heroSection.classList.add('hero-fullscreen');
+  }
+  
+  // Apply centering class to content wrapper
+  const heroContent = heroSection?.querySelector('.flex.items-center.justify-center.min-h-screen');
+  if (heroContent) {
+    heroContent.classList.add('hero-content-center');
+  }
+  
+  // Handle viewport height changes (mobile browser address bar)
+  function updateViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
+  updateViewportHeight();
+  window.addEventListener('resize', updateViewportHeight);
+  
+  // Optimize image loading for hero
+  const heroImage = heroSection?.querySelector('img');
+  if (heroImage) {
+    heroImage.style.objectFit = 'cover';
+    heroImage.style.objectPosition = 'center';
+  }
+  
+  // Gallery scroll indicators functionality
+  const gallery = document.querySelector('.flex.gap-4.sm\\:gap-6.lg\\:gap-8.overflow-x-auto');
+  const indicators = document.querySelectorAll('.flex.justify-center.mt-6 > div');
+  
+  if (gallery && indicators.length > 0) {
+    function updateIndicators() {
+      const scrollLeft = gallery.scrollLeft;
+      const containerWidth = gallery.offsetWidth;
+      const articles = gallery.querySelectorAll('article');
+      
+      if (articles.length === 0) return;
+      
+      let activeIndex = 0;
+      let minDistance = Infinity;
+      
+      // Find the article that's most centered in the viewport
+      articles.forEach((article, index) => {
+        const articleRect = article.getBoundingClientRect();
+        const galleryRect = gallery.getBoundingClientRect();
+        
+        // Calculate the center of the article relative to the gallery container
+        const articleCenter = articleRect.left + (articleRect.width / 2) - galleryRect.left;
+        const galleryCenter = containerWidth / 2;
+        
+        // Find the article closest to the center
+        const distance = Math.abs(articleCenter - galleryCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = index;
+        }
+      });
+      
+      // Ensure we don't exceed the number of indicators
+      activeIndex = Math.min(activeIndex, indicators.length - 1);
+      
+      // Update indicator styles
+      indicators.forEach((indicator, index) => {
+        if (index === activeIndex) {
+          indicator.classList.remove('bg-[#845d45]/30');
+          indicator.classList.add('bg-[#845d45]');
+        } else {
+          indicator.classList.remove('bg-[#845d45]');
+          indicator.classList.add('bg-[#845d45]/30');
+        }
+      });
+    }
+    
+    // Add scroll event listener with throttling for better performance
+    let scrollTimeout;
+    gallery.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(updateIndicators, 10);
+    });
+    
+    // Initial update
+    setTimeout(updateIndicators, 100);
+    
+    // Make indicators clickable
+    indicators.forEach((indicator, index) => {
+      indicator.style.cursor = 'pointer';
+      indicator.style.transition = 'all 0.3s ease';
+      
+      indicator.addEventListener('click', function() {
+        const articles = gallery.querySelectorAll('article');
+        if (articles[index]) {
+          const targetArticle = articles[index];
+          const galleryRect = gallery.getBoundingClientRect();
+          const articleRect = targetArticle.getBoundingClientRect();
+          
+          // Calculate the scroll position to center the target article
+          const currentScrollLeft = gallery.scrollLeft;
+          const targetScrollLeft = currentScrollLeft + (articleRect.left - galleryRect.left) - (galleryRect.width / 2) + (articleRect.width / 2);
+          
+          gallery.scrollTo({
+            left: targetScrollLeft,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Update indicators on window resize
+    window.addEventListener('resize', function() {
+      setTimeout(updateIndicators, 100);
+    });
+  }
+  
   // Intersection Observer for animations
   const observerOptions = {
     threshold: 0.1,
@@ -416,28 +529,6 @@ document.addEventListener('DOMContentLoaded', function() {
     section.classList.add('animate-on-scroll');
     observer.observe(section);
   });
-  
-  // Gallery scroll indicators for all screen sizes
-  const gallery = document.querySelector('.flex.gap-4.sm\\:gap-6.lg\\:gap-8.overflow-x-auto');
-  const indicators = document.querySelectorAll('.flex.justify-center.mt-6 > div');
-  
-  if (gallery && indicators.length > 0) {
-    gallery.addEventListener('scroll', () => {
-      const scrollLeft = gallery.scrollLeft;
-      const itemWidth = gallery.children[0].offsetWidth + 32; // width + gap (lg:gap-8 = 32px)
-      const activeIndex = Math.round(scrollLeft / itemWidth);
-      
-      indicators.forEach((indicator, index) => {
-        if (index === activeIndex) {
-          indicator.classList.remove('bg-[#845d45]/30');
-          indicator.classList.add('bg-[#845d45]');
-        } else {
-          indicator.classList.remove('bg-[#845d45]');
-          indicator.classList.add('bg-[#845d45]/30');
-        }
-      });
-    });
-  }
   
   // Preload critical images
   const criticalImages = [
@@ -466,6 +557,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   lazyImages.forEach(img => imageObserver.observe(img));
+  
+  // Smooth scroll behavior for modern browsers
+  if ('scrollBehavior' in document.documentElement.style) {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }
+  
+  console.log('🎯 Flow Haven Studios: Enhanced functionality loaded');
 });
 </script>
 
