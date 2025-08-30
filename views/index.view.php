@@ -127,7 +127,7 @@
         </article>
 
         <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
-          <img src="/assets/images/studio-community.jpg" alt="flow haven community" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+          <img src="/assets/images/instructorCTA.jpg" alt="flow haven community" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
           <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
@@ -188,6 +188,33 @@
           <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
             explore movement with our range of specialized pilates apparatus designed for deeper muscle engagement.
           </p>
+        </article>
+
+        <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-6 sm:px-8 pt-64 sm:pt-80 pb-6 sm:pb-8 hover:transform hover:scale-105 transition-transform duration-200 flex-none w-72 sm:w-80 lg:w-96 snap-start">
+          <img src="/assets/images/studio-community.jpg" alt="flow haven studios event hire space" class="absolute inset-0 -z-10 size-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b2a24] via-[#2b2a24]/40"></div>
+          <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+
+          <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-[#f2e9dc]">
+            <span class="mr-8 font-quicksand">private events & hire</span>
+          </div>
+          <h3 class="mt-3 text-lg/6 font-semibold text-white font-quicksand">
+            <span>hire the studio</span>
+          </h3>
+          <p class="mt-2 text-sm text-[#f2e9dc]/80 font-quicksand">
+            transform our boutique space for your special event. perfect for corporate wellness sessions, private parties, or intimate celebrations.
+          </p>
+          
+          <!-- Call-to-action button for events -->
+          <div class="mt-4">
+            <a href="mailto:events@flowhavenstudios.com?subject=Studio Hire Enquiry" 
+              class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-[#845d45] rounded-md hover:bg-[#6d4935] transition-colors duration-200">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              enquire now
+            </a>
+          </div>
         </article>
 
       </div>
