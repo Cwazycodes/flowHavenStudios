@@ -88,7 +88,7 @@
               <div class="text-sm sm:text-base text-[#845d45] font-quicksand">
                 <span class="block font-medium mb-1">location:</span>
                 <address class="not-italic leading-relaxed">
-                  unit g01, pillbox<br>
+                  pillbox, unit g01<br>
                   115 coventry road<br>
                   bethnal green<br>
                   london e2 6gh
