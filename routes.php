@@ -5,6 +5,7 @@
 $router->get('/', 'index.php');
 $router->get('/instructors', 'instructors.php');
 $router->get('/faq', 'faq.php');
+$router->get('/pricing', 'pricing.php');
 
 // Admin routes
 $router->post('/admin/login', 'admin/password-check.php');

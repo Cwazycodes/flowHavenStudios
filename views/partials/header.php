@@ -39,6 +39,7 @@
       <div class="hidden lg:flex lg:gap-x-8 xl:gap-x-12">
         <a href="/" class="text-sm xl:text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white py-2">home</a>
         <a href="/book" class="text-sm xl:text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white py-2">book</a>
+        <a href="/pricing" class="text-sm xl:text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white py-2">pricing</a>
         <a href="/instructors" class="text-sm xl:text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white py-2">instructors</a>
         <a href="/faq" class="text-sm xl:text-base font-quicksand transition-colors duration-200 text-[#845d45] hover:text-white py-2">faq</a>
       </div>
@@ -79,6 +80,7 @@
       <div class="flex-1 p-4 space-y-2">
         <a href="/" class="block rounded-lg px-4 py-3 text-lg font-quicksand text-[#2b2a24] hover:bg-[#845d45] hover:text-white transition-colors">home</a>
         <a href="/book" class="block rounded-lg px-4 py-3 text-lg font-quicksand text-[#2b2a24] hover:bg-[#845d45] hover:text-white transition-colors">book</a>
+        <a href="/pricing" class="block rounded-lg px-4 py-3 text-lg font-quicksand text-[#2b2a24] hover:bg-[#845d45] hover:text-white transition-colors">pricing</a>
         <a href="/instructors" class="block rounded-lg px-4 py-3 text-lg font-quicksand text-[#2b2a24] hover:bg-[#845d45] hover:text-white transition-colors">instructors</a>
         <a href="/faq" class="block rounded-lg px-4 py-3 text-lg font-quicksand text-[#2b2a24] hover:bg-[#845d45] hover:text-white transition-colors">faq</a>
         
