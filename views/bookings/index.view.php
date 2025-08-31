@@ -3,7 +3,7 @@
 <section class="bg-[#f2e9dc] py-16 sm:py-24 lg:py-32">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-8 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#845d45] font-quicksand">book a class</h2>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2b2a24] font-quicksand mb-6">book a class</h2>
       <p class="mt-2 text-sm sm:text-base text-gray-600 font-quicksand">choose from available time slots below.</p>
     </div>
 

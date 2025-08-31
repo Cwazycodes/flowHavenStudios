@@ -4,7 +4,7 @@
   <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
     <!-- Header Section -->
     <div class="mx-auto max-w-3xl text-center">
-      <h2 class="text-4xl font-semibold tracking-tight text-[#2b2a24] sm:text-5xl font-quicksand">frequently asked questions</h2>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2b2a24] font-quicksand mb-6">frequently asked questions</h2>
       <p class="mt-6 text-base/7 text-[#845d45] font-quicksand">have a different question and can't find the answer you're looking for? reach out to our support team by <a href="mailto:hello@flowhavenstudios.com" class="font-semibold text-[#845d45] hover:text-[#6e4635] underline decoration-2 underline-offset-2 transition-colors duration-200">sending us an email</a> and we'll get back to you as soon as we can.</p>
     </div>
 
