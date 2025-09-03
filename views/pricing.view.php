@@ -651,11 +651,54 @@
         }
         </style>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 border border-[#845d45]/10 text-center">
-          <h3 class="text-lg font-bold text-[#2b2a24] font-quicksand mb-2">20 classes</h3>
-          <div class="text-2xl font-bold text-[#845d45] font-quicksand mb-1">£300</div>
-          <p class="text-xs text-gray-600 font-quicksand">£15 per session</p>
-        </div>
+<!-- Replace the existing student 20 classes div with this updated version -->
+<div class="bg-white rounded-2xl shadow-lg p-6 border border-[#845d45]/10 text-center">
+  <h3 class="text-lg font-bold text-[#2b2a24] font-quicksand mb-2">20 classes</h3>
+  <div class="text-2xl font-bold text-[#845d45] font-quicksand mb-1">£300</div>
+  <p class="text-xs text-gray-600 font-quicksand mb-4">£15 per session</p>
+  
+  <!-- Your Mindbody Widget -->
+  <healcode-widget 
+    data-version="0.2" 
+    data-link-class="healcode-pricing-option-text-link student-twenty-class-btn" 
+    data-site-id="128729" 
+    data-mb-site-id="5747508" 
+    data-service-id="100029" 
+    data-bw-identity-site="true" 
+    data-type="pricing-link" 
+    data-inner-html="Purchase Now">
+  </healcode-widget>
+</div>
+
+<style>
+/* Style the Mindbody button for student 20 classes */
+.healcode-pricing-option-text-link.student-twenty-class-btn {
+  display: inline-block !important;
+  width: 100% !important;
+  background-color: #845d45 !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  font-family: 'Quicksand', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.healcode-pricing-option-text-link.student-twenty-class-btn:hover {
+  background-color: #6e4635 !important;
+  transform: scale(1.05) !important;
+  color: white !important;
+}
+
+.healcode-pricing-option-text-link.student-twenty-class-btn:active {
+  transform: scale(0.98) !important;
+}
+</style>
 
       </div>
     </div>

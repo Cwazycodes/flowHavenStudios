@@ -22,7 +22,7 @@
         <div class="text-center">
           <!-- Responsive heading -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance text-white font-quicksand leading-tight">
-            <span class="block sm:inline">find your flow</span>
+            <span class="block sm:inline">control, reset, reform</span>
           </h1>
           
           <!-- Responsive subtitle -->
