@@ -297,7 +297,7 @@
         </p>
       </div>
 
-      <!-- Mind-Body Connection -->
+      <!-- gender specific classes -->
       <div class="text-center sm:text-left lg:text-center">
         <div class="flex justify-center sm:justify-start lg:justify-center mb-4">
           <div class="h-12 w-12 sm:h-14 sm:w-14 flex items-center justify-center rounded-full bg-[#845d45] text-white">
@@ -308,7 +308,7 @@
           gender specific classes
         </h3>
         <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-        exclusive women-only sessions designed to build strength, confidence, and community together
+        men's and women's only sessions to help you train with confidence in a supportive environment
         </p>
       </div>
 
