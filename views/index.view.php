@@ -301,16 +301,14 @@
       <div class="text-center sm:text-left lg:text-center">
         <div class="flex justify-center sm:justify-start lg:justify-center mb-4">
           <div class="h-12 w-12 sm:h-14 sm:w-14 flex items-center justify-center rounded-full bg-[#845d45] text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 640 640" class="w-5 h-5 sm:w-6 sm:h-6">
-              <path fill="#ffffff" d="M184 120C184 89.1 209.1 64 240 64L264 64C281.7 64 296 78.3 296 96L296 544C296 561.7 281.7 576 264 576L232 576C202.2 576 177.1 555.6 170 528C169.3 528 168.7 528 168 528C123.8 528 88 492.2 88 448C88 430 94 413.4 104 400C84.6 385.4 72 362.2 72 336C72 305.1 89.6 278.2 115.2 264.9C108.1 252.9 104 238.9 104 224C104 179.8 139.8 144 184 144L184 120zM456 120L456 144C500.2 144 536 179.8 536 224C536 239 531.9 253 524.8 264.9C550.5 278.2 568 305 568 336C568 362.2 555.4 385.4 536 400C546 413.4 552 430 552 448C552 492.2 516.2 528 472 528C471.3 528 470.7 528 470 528C462.9 555.6 437.8 576 408 576L376 576C358.3 576 344 561.7 344 544L344 96C344 78.3 358.3 64 376 64L400 64C430.9 64 456 89.1 456 120z"/>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M208 240C208 178.1 258.1 128 320 128C381.9 128 432 178.1 432 240C432 301.9 381.9 352 320 352C258.1 352 208 301.9 208 240zM351.9 413.1C433.9 398.1 496 326.3 496 240C496 142.8 417.2 64 320 64C222.8 64 144 142.8 144 240C144 326.3 206.1 398.1 288.1 413.1C288 414.1 288 415 288 416L288 480L256 480C238.3 480 224 494.3 224 512C224 529.7 238.3 544 256 544L288 544L288 576C288 593.7 302.3 608 320 608C337.7 608 352 593.7 352 576L352 544L384 544C401.7 544 416 529.7 416 512C416 494.3 401.7 480 384 480L352 480L352 416C352 415 352 414.1 351.9 413.1z"/></svg>
           </div>
         </div>
         <h3 class="text-base sm:text-lg font-semibold font-quicksand text-[#845d45] mb-3">
-          mind-body connection
+          gender specific classes
         </h3>
         <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed">
-          leave each class feeling stronger, clearer, and more centered — physically and mentally.
+        exclusive women-only sessions designed to build strength, confidence, and community together
         </p>
       </div>
 
