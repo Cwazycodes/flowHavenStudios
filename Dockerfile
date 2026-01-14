@@ -19,9 +19,12 @@ COPY . /var/www/html/
 # Change Apache DocumentRoot to /var/www/html
 ENV APACHE_DOCUMENT_ROOT=/var/www/html
 
-# Update Apache site config to use new DocumentRoot
-RUN sed -ri -e 's!/var/www/html!/var/www/html!g' /etc/apache2/sites-available/000-default.conf \
-    && sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+# Add Directory directive with AllowOverride All to the VirtualHost
+RUN sed -i '/<\/VirtualHost>/i \
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>' /etc/apache2/sites-available/000-default.conf
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html
