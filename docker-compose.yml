@@ -21,12 +21,11 @@ services:
       - FROM_NAME=${FROM_NAME}
       - REPLY_TO_EMAIL=${REPLY_TO_EMAIL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    volumes:
+      - ./:/var/www/html  # This syncs your local files with the container
     networks:
       - flowhaven-network
 
 networks:
   flowhaven-network:
     driver: bridge
-
-volumes:
-  db-data:
