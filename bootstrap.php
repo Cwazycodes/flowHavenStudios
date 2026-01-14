@@ -5,7 +5,7 @@ use Core\Container;
 use Core\Database;
 
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
-$dotenv->load();
+$dotenv->safeLoad();  // Changed from load() to safeLoad()
 
 $container = new Container();
 

@@ -42,3 +42,10 @@ yarn-error.log*
 # Upload directories
 /uploads/
 /public/uploads/
+
+# Docker
+.env
+docker-compose.override.yml
+
+# Database
+db-data/
