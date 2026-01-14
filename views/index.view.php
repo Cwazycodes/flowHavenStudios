@@ -22,7 +22,7 @@
         <div class="text-center">
           <!-- Responsive heading -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance text-white font-quicksand leading-tight">
-            <span class="block sm:inline">control, reset, reform</span>
+            <span class="block sm:inline">your positive disruption</span>
           </h1>
           
           <!-- Responsive subtitle -->
@@ -337,13 +337,28 @@
           start your journey today
         </h2>
         <p class="mx-auto max-w-2xl text-base sm:text-lg lg:text-xl text-white/90 font-quicksand mb-8 sm:mb-10">
-          join our bethnal green studio and experience the transformation of reformer pilates
+          download our app and experience the transformation of reformer pilates
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-          <a href="/book" 
-             class="w-full sm:w-auto inline-block rounded-full bg-[#845d45] px-6 sm:px-8 py-3 sm:py-4 text-white font-quicksand shadow-lg hover:bg-[#6e4635] hover:shadow-xl transition-all duration-300 font-medium text-base sm:text-lg active:scale-95">
-            book a class
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a href="https://apps.apple.com/gb/app/flow-haven-studio/id6753799997" 
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-block transition-transform duration-200 hover:scale-105 active:scale-95">
+            <img src="/assets/images/app-store-badge.svg" 
+                 alt="Download on the App Store" 
+                 class="h-10 sm:h-12 md:h-14 w-auto mx-auto"
+                 loading="lazy" />
+          </a>
+          
+          <a href="https://play.google.com/store/apps/details?id=com.fitnessmobileapps.flowhavenstudios42803&pcampaignid=web_share" 
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-block transition-transform duration-200 hover:scale-105 active:scale-95">
+            <img src="/assets/images/google-play-badge.png" 
+                 alt="Get it on Google Play" 
+                 class="h-10 sm:h-12 md:h-14 w-auto mx-auto"
+                 loading="lazy" />
           </a>
         </div>
       </div>
