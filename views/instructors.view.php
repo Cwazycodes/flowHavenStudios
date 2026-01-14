@@ -16,40 +16,6 @@
     <!-- Instructors Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
       
-      <!-- Amelia Harris -->
-      <div class="group">
-        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-          <!-- Image Container -->
-          <div class="aspect-[4/5] overflow-hidden">
-            <img src="assets/instructor-images/amelia-harris.jpg" 
-                 alt="Amelia Harris - Reformer Pilates Instructor"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" />
-          </div>
-          
-          <!-- Content -->
-          <div class="p-6 lg:p-8 flex-1 flex flex-col">
-            <div class="mb-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
-                amelia harris
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  4 years fitness
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
-                  reformer specialist
-                </span>
-              </div>
-            </div>
-            
-            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
-              amelia combines four years of fitness instruction expertise with her growing passion for reformer pilates. her broad foundation in general fitness gives her a unique perspective on functional movement and injury prevention. as a newer voice in the pilates world, amelia brings fresh enthusiasm and relatability to students beginning their own pilates journey. her classes focus on building confidence, proper alignment, and discovering the transformative power of mindful movement.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <!-- Deena Rahman -->
       <div class="group">
         <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
