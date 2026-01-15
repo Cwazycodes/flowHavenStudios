@@ -256,7 +256,7 @@
         <!-- Monthly Membership -->
         <div class="pricing-card bg-[#845d45] rounded-2xl shadow-lg hover:shadow-xl p-6 lg:p-8 text-white">
           <div class="text-center">
-            <h3 class="text-xl lg:text-2xl font-bold font-quicksand mb-2">monthly membership</h3>
+            <h3 class="text-xl lg:text-2xl font-bold font-quicksand mb-2">4 class monthly membership</h3>
             <div class="text-3xl lg:text-4xl font-bold font-quicksand mb-2">£90</div>
             <p class="text-sm text-white/80 font-quicksand mb-2">£22.50 classes per month</p>
             <p class="text-sm text-white/80 font-quicksand mb-6">recurring monthly</p>
