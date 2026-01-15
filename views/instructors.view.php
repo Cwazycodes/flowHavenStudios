@@ -218,6 +218,142 @@
         </div>
       </div>
 
+      <!-- Ethel Botchway -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/ethel-botchway.jpg" 
+                 alt="Ethel Botchway - Mat & Reformer Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                ethel botchway
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  mat & reformer
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  empowerment focused
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              world-traveller ethel is a certified mat and reformer pilates instructor who brings energy and focus to every session, with a passion sparked through her own practice. with a bubbly personality, she is extremely passionate about making pilates fun, client focused and empowering. with a background in professional training & development, ethel is here to help you feel confident and in control.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sian McIntyre -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/sian-mcintyre.jpg" 
+                 alt="Sian McIntyre - Barre & Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                sian mcintyre
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  dance background
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  barre & reformer
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              previously a dance teacher, siân now teaches barre, reformer and mat pilates in boutique studios across london. she brings a warm and welcoming energy, encouraging you to step outside of your comfort zone whilst working on technique, posture, and building strength.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jeison Rosendo -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/jeison-rosendo.jpg" 
+                 alt="Jeison Rosendo - Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                jeison rosendo
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  brazilian movement
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  mental empowerment
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              hailing from brazil, jeison is passionate about movement. his classes are designed to challenge your physical strength but most importantly to tap into your mental power. expect equal doses of fire, fun and thrills! leave his classes feeling empowered, breathing bigger and more connected to your body!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gökçe Coşgun -->
+      <div class="group">
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+          <!-- Image Container -->
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="assets/instructor-images/gokce-cosgun.jpg" 
+                 alt="Gökçe Coşgun - Pilates Instructor"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" />
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 lg:p-8 flex-1 flex flex-col">
+            <div class="mb-4">
+              <h3 class="text-xl lg:text-2xl font-bold text-[#2b2a24] font-quicksand mb-2">
+                gökçe coşgun
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  mindful movement
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#845d45]/10 text-[#845d45] border border-[#845d45]/20">
+                  beginner friendly
+                </span>
+              </div>
+            </div>
+            
+            <p class="text-sm sm:text-base text-gray-600 font-quicksand leading-relaxed flex-1">
+              gökçe's journey into pilates began with a deep interest in mindful movement and body awareness. she has been passionate about creating supportive, beginner-friendly classes that help people feel strong, safe, and connected to their bodies. her calm and encouraging approach inspires confidence, improves mobility, and makes every session both grounding and empowering.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Contact Card -->
       <div class="group">
         <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
